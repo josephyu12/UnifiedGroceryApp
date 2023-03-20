@@ -12,8 +12,23 @@ struct ContentView: View {
         TabView {
             HomeView()
                 .tabItem() {
-                    Image(systemName: "custom.house")
+                    Image(systemName: "house")
                     Text("Home")
+                }
+            RecipeView()
+                .tabItem() {
+                    Image(systemName: "list.clipboard")
+                    Text("Recipes")
+                }
+            FridgeView()
+                .tabItem() {
+                    Image(systemName: "takeoutbag.and.cup.and.straw.fill")
+                    Text("Fridge")
+                }
+            AddView()
+                .tabItem() {
+                    Image(systemName: "plus")
+                    Text("Add")
                 }
         }
         

@@ -14,6 +14,10 @@
 		7CE54C9C298417A000676743 /* UnifiedGroceryAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE54C9B298417A000676743 /* UnifiedGroceryAppTests.swift */; };
 		7CE54CA6298417A000676743 /* UnifiedGroceryAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE54CA5298417A000676743 /* UnifiedGroceryAppUITests.swift */; };
 		7CE54CA8298417A000676743 /* UnifiedGroceryAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE54CA7298417A000676743 /* UnifiedGroceryAppUITestsLaunchTests.swift */; };
+		F2381C6F29C8D6E900BEA098 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2381C6E29C8D6E900BEA098 /* RecipeView.swift */; };
+		F2381C7229C8DF9700BEA098 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2381C7129C8DF9700BEA098 /* HomeView.swift */; };
+		F2381C7429C8DFA000BEA098 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2381C7329C8DFA000BEA098 /* AddView.swift */; };
+		F2381C7629C8DFB100BEA098 /* FridgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2381C7529C8DFB100BEA098 /* FridgeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,10 @@
 		7CE54CA1298417A000676743 /* UnifiedGroceryAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnifiedGroceryAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CE54CA5298417A000676743 /* UnifiedGroceryAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedGroceryAppUITests.swift; sourceTree = "<group>"; };
 		7CE54CA7298417A000676743 /* UnifiedGroceryAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedGroceryAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F2381C6E29C8D6E900BEA098 /* RecipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
+		F2381C7129C8DF9700BEA098 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		F2381C7329C8DFA000BEA098 /* AddView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		F2381C7529C8DFB100BEA098 /* FridgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FridgeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				7CE54C8A2984179F00676743 /* UnifiedGroceryAppApp.swift */,
+				F2381C7029C8DF7000BEA098 /* Views */,
 				7CE54C8C2984179F00676743 /* ContentView.swift */,
 				7CE54C8E298417A000676743 /* Assets.xcassets */,
 				7CE54C90298417A000676743 /* Preview Content */,
@@ -125,6 +134,17 @@
 				7CE54CA7298417A000676743 /* UnifiedGroceryAppUITestsLaunchTests.swift */,
 			);
 			path = UnifiedGroceryAppUITests;
+			sourceTree = "<group>";
+		};
+		F2381C7029C8DF7000BEA098 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F2381C6E29C8D6E900BEA098 /* RecipeView.swift */,
+				F2381C7129C8DF9700BEA098 /* HomeView.swift */,
+				F2381C7329C8DFA000BEA098 /* AddView.swift */,
+				F2381C7529C8DFB100BEA098 /* FridgeView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +277,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2381C6F29C8D6E900BEA098 /* RecipeView.swift in Sources */,
+				F2381C7229C8DF9700BEA098 /* HomeView.swift in Sources */,
+				F2381C7429C8DFA000BEA098 /* AddView.swift in Sources */,
 				7CE54C8D2984179F00676743 /* ContentView.swift in Sources */,
 				7CE54C8B2984179F00676743 /* UnifiedGroceryAppApp.swift in Sources */,
+				F2381C7629C8DFB100BEA098 /* FridgeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

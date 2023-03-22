@@ -7,7 +7,15 @@
 
 import SwiftUI
 
+extension UIScreen{
+    static let screenWidth = UIScreen.main.bounds.size.width
+    static let screenHeight = UIScreen.main.bounds.size.height
+    static let screenSize = UIScreen.main.bounds.size
+}
+
 struct ContentView: View {
+
+    
     var body: some View {
         
         VStack {
@@ -32,37 +40,45 @@ struct ContentView: View {
                 }
             }
             .padding(0.0)
-            .frame(width: 400, height: 65.0)
+            .frame(width: UIScreen.screenWidth, height: 65.0)
             
             
-            TabView {
-                HomeView()
-                    .padding(0.0)
-                    .tabItem() {
-                        Image(systemName: "house")
-                        Text("Home")
-                    }
-                RecipeView()
-                    .tabItem() {
-                        Image(systemName: "list.clipboard")
-                        Text("Recipes")
-                    }
-                FridgeView()
-                    .tabItem() {
-                        Image(systemName: "takeoutbag.and.cup.and.straw.fill")
-                        Text("Fridge")
-                    }
-                AddView()
-                    .tabItem() {
-                        Image(systemName: "plus")
-                        Text("Add")
-                    }
+            ZStack {
+                TabView {
+                    HomeView()
+                        .padding(0.0)
+                        .tabItem() {
+                            Image(systemName: "house")
+                            Text("Home")
+                        }
+                    RecipeView()
+                        .tabItem() {
+                            Image(systemName: "list.clipboard")
+                            Text("Recipes")
+                        }
+                    FridgeView()
+                        .tabItem() {
+                            Image(systemName: "takeoutbag.and.cup.and.straw.fill")
+                            Text("Fridge")
+                        }
+                    AddView()
+                        .tabItem() {
+                            Image(systemName: "plus")
+                            Text("Add")
+                        }
+                }
+                .onAppear() {
+                    UITabBar.appearance().backgroundColor =
+                    .yellow
+                    UITabBar.appearance().isOpaque = true
+                    
+                }
+                .padding(0.0)
             }
-            .padding(0.0)
-            
         }
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

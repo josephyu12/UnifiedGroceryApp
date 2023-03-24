@@ -14,11 +14,22 @@ extension UIScreen{
 }
 
 struct ContentView: View {
+    
+    init() {
+        let standardAppearance = UITabBarAppearance()
 
+           // prevent Nav Bar color change on scroll view push behind NavBar
+           standardAppearance.configureWithOpaqueBackground()
+           standardAppearance.backgroundColor = UIColor.blue
+        
+//           self.navigationController?.navigationBar.standardAppearance = standardAppearance
+//           self.navigationController?.navigationBar.scrollEdgeAppearance = standardAppearance
+    }
+    
     
     var body: some View {
         
-        VStack {
+        VStack(spacing: 0) {
             ZStack{
                 Color("redcolor").ignoresSafeArea()
                 HStack {
@@ -40,7 +51,7 @@ struct ContentView: View {
                 }
             }
             .padding(0.0)
-            .frame(width: UIScreen.screenWidth, height: 65.0)
+            .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight/20)
             
             
             ZStack {
@@ -65,15 +76,17 @@ struct ContentView: View {
                         .tabItem() {
                             Image(systemName: "plus")
                             Text("Add")
+                            
                         }
                 }
-                .onAppear() {
-                    UITabBar.appearance().backgroundColor =
-                    .yellow
-                    UITabBar.appearance().isOpaque = true
-                    
+                .onAppear {
+                    if #available(iOS 15.0, *) {
+                        let tabBarAppearance = UITabBarAppearance()
+                        tabBarAppearance.configureWithOpaqueBackground()
+                        UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+
+                    }
                 }
-                .padding(0.0)
             }
         }
     }

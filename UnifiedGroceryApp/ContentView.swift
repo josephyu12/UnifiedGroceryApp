@@ -15,18 +15,6 @@ extension UIScreen{
 
 struct ContentView: View {
     
-    //    init() {
-    //        let standardAppearance = UITabBarAppearance()
-    //
-    //           // prevent Nav Bar color change on scroll view push behind NavBar
-    //           standardAppearance.configureWithOpaqueBackground()
-    //           standardAppearance.backgroundColor = UIColor.blue
-    //
-    ////           self.navigationController?.navigationBar.standardAppearance = standardAppearance
-    ////           self.navigationController?.navigationBar.scrollEdgeAppearance = standardAppearance
-    //    }
-    
-    
     var body: some View {
         
         VStack(spacing: 0) {

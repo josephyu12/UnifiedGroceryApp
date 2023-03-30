@@ -31,6 +31,7 @@ import UIKit
 
 struct HomeView: View {
 
+    let currentDateTime = Date()
     
     var body: some View {
             
@@ -44,7 +45,7 @@ struct HomeView: View {
                     
                     VStack {
                         
-                        if (true) {
+                        if (currentDateTime.timeIntervalSince1970%86400>1) {
                             Text("Good Morning")
                                 .font(.largeTitle).padding(.top)
                         } else if (true) {

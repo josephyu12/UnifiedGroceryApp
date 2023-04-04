@@ -44,6 +44,12 @@ struct HomeView: View {
                 
                 ScrollView(showsIndicators: false) {
                     
+                    var symbols = ["keyboard", "hifispeaker.fill", "printer.fill", "tv.fill", "desktopcomputer", "headphones", "tv.music.note", "mic", "plus.bubble", "video"]
+                    
+                    var threeColumnGrid = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
+                    
+                    var colors: [Color] = [.yellow, .purple, .green]
+                    
                     VStack {
                         
                         if ((Int(currentDateTime.timeIntervalSince1970)+timeZone)%86400<43200) {
@@ -53,6 +59,16 @@ struct HomeView: View {
                             Text("Good Afternoon").font(.largeTitle).padding(.top)
                         } else {
                             Text("Good Evening").font(.largeTitle).padding(.top)
+                        }
+                        
+                        LazyVGrid(columns: threeColumnGrid, spacing: 20) {
+                                    ForEach((0...9999), id: \.self) {
+                                        Image(systemName: symbols[$0 % symbols.count])
+                                            .font(.system(size: 30))
+                                            .frame(width: 50, height: 50)
+                                            .background(colors[$0 % colors.count])
+                                            .cornerRadius(10)
+                                    }
                         }
                         
                         Text("this is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\n")

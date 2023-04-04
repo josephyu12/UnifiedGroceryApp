@@ -8,60 +8,26 @@
 import SwiftUI
 
 struct RecipeView: View {
+    
+    @ObservedObject var model = ViewModel()
+    
     var body: some View {
         ZStack {
-            
-            Color("bluecolor").edgesIgnoringSafeArea(.all)
-            
-            /*VStack {
-                Spacer()
-                Image("logo")
-                Spacer()
-                HStack {
-                    Spacer()
-                    Image("card2")
-                    Spacer()
-                    Image("card3")
-                    Spacer()
-                }
-                Spacer()
                 
-                Image("dealbutton")
-                Spacer()
+                Color("bluecolor").edgesIgnoringSafeArea(.all)
+            
+                List(model.list) { item in Text(item.title) }
                 
-                HStack {
-                    Spacer()
-                    VStack {
-                        Text("asfasfsdafadsf")
-                            .font(.headline)
-                            .foregroundColor(Color.white)
-                            .padding(.bottom, 10.0)
-                        Text("0")
-                            .font(.largeTitle)
-                            .foregroundColor(Color.white)
-                        
-                    }
-                    Spacer()
-                    
-                    VStack {
-                        Text("CPU")
-                            .font(.headline)
-                            .foregroundColor(Color.white)
-                            .padding(.bottom, 10.0)
-                        Text("0")
-                            .font(.largeTitle)
-                            .foregroundColor(Color.white)
-                    }
-                    Spacer()
-                    
-                }
-                Spacer()
-            }*/
+            }
             
         }
+    
+    init() {
+        model.getData()
+    }
 
     }
-}
+    
 
 struct RecipeView_Previews: PreviewProvider {
     static var previews: some View {

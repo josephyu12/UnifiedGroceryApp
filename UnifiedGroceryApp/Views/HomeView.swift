@@ -30,7 +30,8 @@ import UIKit
 
 
 struct HomeView: View {
-
+    
+    let timeZone = Int(TimeZone.current.secondsFromGMT())
     let currentDateTime = Date()
     
     var body: some View {
@@ -45,13 +46,13 @@ struct HomeView: View {
                     
                     VStack {
                         
-                        if (currentDateTime.timeIntervalSince1970%86400>1) {
+                        if ((Int(currentDateTime.timeIntervalSince1970)+timeZone)%86400<43200) {
                             Text("Good Morning")
                                 .font(.largeTitle).padding(.top)
-                        } else if (true) {
-                            Text("Good Afternoon").font(.largeTitle)      .padding(.top)
+                        } else if ((Int(currentDateTime.timeIntervalSince1970)+timeZone)%86400>1) {
+                            Text("Good Afternoon").font(.largeTitle).padding(.top)
                         } else {
-                            Text("Good Evening").font(.largeTitle)      .padding(.top)
+                            Text("Good Evening").font(.largeTitle).padding(.top)
                         }
                         
                         Text("this is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\n")

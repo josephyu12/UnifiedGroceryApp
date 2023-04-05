@@ -43,19 +43,15 @@ struct HomeView: View {
                         Text("Good Evening").font(.largeTitle).padding(.top)
                     }
                     
-                                            LazyVGrid(columns: threeColumnGrid, spacing: 20) {
-                                                        ForEach((0...9999), id: \.self) {
-                                                            Image(systemName: symbols[$0 % symbols.count])
-                                                                .font(.system(size: 30))
-                                                                .frame(width: 50, height: 50)
-                                                                .background(colors[$0 % colors.count])
-                                                                .cornerRadius(10)
-                                                        }
-                                            }
-                    
-                    Text("this is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\nthis is sample filler text\n")
-                        .multilineTextAlignment(.leading)
-                        .padding(.top, 0.1)
+                    LazyVGrid(columns: threeColumnGrid, spacing: 20) {
+                        ForEach((0...9999), id: \.self) {
+                            Image(systemName: symbols[$0 % symbols.count])
+                                .font(.system(size: 30))
+                                .frame(width: 50, height: 50)
+                                .background(colors[$0 % colors.count])
+                                .cornerRadius(10)
+                        }
+                    }
                     
                 }
                 

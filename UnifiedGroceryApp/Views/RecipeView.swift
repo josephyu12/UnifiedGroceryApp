@@ -36,7 +36,9 @@ struct RecipeView: View {
                         
                         List(model.list) { item in Text(item.title) }
      
-                        ForEach((0...9), id: \.self) {
+//                        ForEach((0...9), id: \.self) {
+                        List(model.list) {
+                            item in 
                             Button(action: {print("this is the action run")} ) {
                                 Image(systemName: "gear").foregroundColor(Color.black)
                                     .padding(0).font(.system(size:24))
@@ -45,7 +47,7 @@ struct RecipeView: View {
                                     .foregroundColor(Color.black)
                             }.font(.system(size: 30))
                                 .frame(minWidth: 0, maxWidth: UIScreen.screenWidth-10)
-                                .background(colors[$0 % colors.count])
+                                //.background(colors[$0 % colors.count])
                                 .cornerRadius(10)
                         }
                         

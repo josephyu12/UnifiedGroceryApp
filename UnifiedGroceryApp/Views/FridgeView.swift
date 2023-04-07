@@ -8,14 +8,16 @@
 import SwiftUI
 
 struct FridgeView: View {
+    
     var body: some View {
         ZStack {
             
             Color("bluecolor").edgesIgnoringSafeArea(.all)
+                
+            }
             
         }
-        
-    }
+
 }
 
 struct FridgeView_Previews: PreviewProvider {

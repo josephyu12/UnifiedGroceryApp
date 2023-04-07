@@ -10,13 +10,19 @@ import SwiftUI
 
 struct RecipeView: View {
     
+    @ObservedObject var model = ViewModel()
+      
     private var gridLayout = [GridItem(.flexible())]
     
     private var colors: [Color] = [.yellow, .purple, .green]
     private var symbols = ["keyboard", "hifispeaker.fill", "printer.fill", "tv.fill", "desktopcomputer", "headphones", "tv.music.note", "mic", "plus.bubble", "video"]
     
+    
     var body: some View {
-        ZStack (alignment: .top) {
+        
+        ZStack {
+          
+                  ZStack (alignment: .top) {
             Color("redcolor").ignoresSafeArea()
             
             Color("bluecolor").edgesIgnoringSafeArea(.top)
@@ -52,10 +58,22 @@ struct RecipeView: View {
                 }
             }
             
+                Color("redcolor").ignoresSafeArea()
+                
+                Color("bluecolor").edgesIgnoringSafeArea(.all)
+            
+                List(model.list) { item in Text(item.title) }
+                
+            }
+            
         }
-        
+    
+    init() {
+        model.getData()
     }
-}
+   
+    }
+    
 
 struct RecipeView_Previews: PreviewProvider {
     static var previews: some View {

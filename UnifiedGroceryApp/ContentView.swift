@@ -63,10 +63,10 @@ struct ContentView: View {
                         .tabItem() {
                             Image(systemName: "plus")
                             Text("Add")
-                                
+                            
                         }
                 }
-
+                
                 .toolbar(.visible, for: .tabBar)
                 .toolbarBackground(Color("redcolor"), for: .tabBar)
                 .toolbarColorScheme(.light, for: .tabBar)

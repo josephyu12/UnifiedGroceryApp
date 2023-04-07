@@ -12,7 +12,10 @@ struct RecipeView: View {
     @ObservedObject var model = ViewModel()
     
     var body: some View {
+        
         ZStack {
+            
+                Color("redcolor").ignoresSafeArea()
                 
                 Color("bluecolor").edgesIgnoringSafeArea(.all)
             
@@ -25,6 +28,8 @@ struct RecipeView: View {
     init() {
         model.getData()
     }
+    
+    
 
     }
     

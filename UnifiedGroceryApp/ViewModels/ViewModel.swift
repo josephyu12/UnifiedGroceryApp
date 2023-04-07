@@ -12,6 +12,25 @@ class ViewModel: ObservableObject {
     
     @Published var list = [Recipe]()
     
+    func addData(title: String, category: String) {
+        
+        // get reference
+        let db = Firestore.firestore()
+        
+        // add document
+        db.collection("recipes").addDocument(data: ["title": title, "category": category]) {
+            error in
+            
+            if error == nil {
+                self.getData()
+            }
+            else {
+                
+            }
+        }
+        
+    }
+    
     func getData() {
         // get reference to the database
         let db = Firestore.firestore()

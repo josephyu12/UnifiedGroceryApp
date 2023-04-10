@@ -10,9 +10,9 @@ import SwiftUI
 struct FridgeView: View {
     
     var body: some View {
-        ZStack {
-            
-            Color("bluecolor").edgesIgnoringSafeArea(.all)
+        ZStack (alignment: .top) {
+            Color("redcolor").ignoresSafeArea()
+            Color("bluecolor").edgesIgnoringSafeArea(.top)
                 
             }
             

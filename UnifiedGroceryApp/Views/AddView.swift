@@ -15,11 +15,11 @@ struct AddView: View {
     @State var category = ""
     
     var body: some View {
-        ZStack {
+        ZStack (alignment: .top) {
             
             
-            
-            Color("bluecolor").edgesIgnoringSafeArea(.all)
+            Color("redcolor").ignoresSafeArea()
+            Color("bluecolor").edgesIgnoringSafeArea(.top)
             
             VStack {
                 

@@ -23,6 +23,7 @@
 		7C72D22729D4AFD800E4A2CC /* FirebaseMLModelDownloader in Frameworks */ = {isa = PBXBuildFile; productRef = 7C72D22629D4AFD800E4A2CC /* FirebaseMLModelDownloader */; };
 		7C72D22929D4AFD800E4A2CC /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 7C72D22829D4AFD800E4A2CC /* FirebaseStorage */; };
 		7C72D22B29D4AFD800E4A2CC /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 7C72D22A29D4AFD800E4A2CC /* FirebaseStorageCombine-Community */; };
+		7C86724429E490C6000C492F /* FridgeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C86724329E490C6000C492F /* FridgeViewModel.swift */; };
 		7CE54C8B2984179F00676743 /* UnifiedGroceryAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE54C8A2984179F00676743 /* UnifiedGroceryAppApp.swift */; };
 		7CE54C8D2984179F00676743 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE54C8C2984179F00676743 /* ContentView.swift */; };
 		7CE54C8F298417A000676743 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CE54C8E298417A000676743 /* Assets.xcassets */; };
@@ -32,6 +33,7 @@
 		7CE54CA8298417A000676743 /* UnifiedGroceryAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CE54CA7298417A000676743 /* UnifiedGroceryAppUITestsLaunchTests.swift */; };
 		7CED8D9929DB54360051A263 /* Fridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CED8D9829DB54360051A263 /* Fridge.swift */; };
 		7CED8D9E29DB55B70051A263 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CED8D9D29DB55B70051A263 /* ViewModel.swift */; };
+		7CF6960029E5030C0018187C /* Ingredient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CF695FF29E5030C0018187C /* Ingredient.swift */; };
 		F2381C6F29C8D6E900BEA098 /* RecipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2381C6E29C8D6E900BEA098 /* RecipeView.swift */; };
 		F2381C7229C8DF9700BEA098 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2381C7129C8DF9700BEA098 /* HomeView.swift */; };
 		F2381C7429C8DFA000BEA098 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2381C7329C8DFA000BEA098 /* AddView.swift */; };
@@ -60,6 +62,7 @@
 /* Begin PBXFileReference section */
 		7C549DA529DC796000DEEC91 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		7C72D20D29D4AFA700E4A2CC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		7C86724329E490C6000C492F /* FridgeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FridgeViewModel.swift; sourceTree = "<group>"; };
 		7CE54C872984179F00676743 /* UnifiedGroceryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnifiedGroceryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CE54C8A2984179F00676743 /* UnifiedGroceryAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedGroceryAppApp.swift; sourceTree = "<group>"; };
 		7CE54C8C2984179F00676743 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -72,6 +75,7 @@
 		7CE54CA7298417A000676743 /* UnifiedGroceryAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedGroceryAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7CED8D9829DB54360051A263 /* Fridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fridge.swift; sourceTree = "<group>"; };
 		7CED8D9D29DB55B70051A263 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		7CF695FF29E5030C0018187C /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		F2381C6E29C8D6E900BEA098 /* RecipeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeView.swift; sourceTree = "<group>"; };
 		F2381C7129C8DF9700BEA098 /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F2381C7329C8DFA000BEA098 /* AddView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
@@ -185,6 +189,7 @@
 			children = (
 				7CED8D9829DB54360051A263 /* Fridge.swift */,
 				7C549DA529DC796000DEEC91 /* Recipe.swift */,
+				7CF695FF29E5030C0018187C /* Ingredient.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -193,6 +198,7 @@
 			isa = PBXGroup;
 			children = (
 				7CED8D9D29DB55B70051A263 /* ViewModel.swift */,
+				7C86724329E490C6000C492F /* FridgeViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -363,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CED8D9929DB54360051A263 /* Fridge.swift in Sources */,
+				7CF6960029E5030C0018187C /* Ingredient.swift in Sources */,
 				7CED8D9E29DB55B70051A263 /* ViewModel.swift in Sources */,
 				F2381C6F29C8D6E900BEA098 /* RecipeView.swift in Sources */,
 				F2381C7229C8DF9700BEA098 /* HomeView.swift in Sources */,
@@ -371,6 +378,7 @@
 				7CE54C8D2984179F00676743 /* ContentView.swift in Sources */,
 				7CE54C8B2984179F00676743 /* UnifiedGroceryAppApp.swift in Sources */,
 				F2381C7629C8DFB100BEA098 /* FridgeView.swift in Sources */,
+				7C86724429E490C6000C492F /* FridgeViewModel.swift in Sources */,
 				F2F2C8A929CA2BD800BC19A2 /* HeaderView.swift in Sources */,
 				7C549DA629DC796000DEEC91 /* Recipe.swift in Sources */,
 			);
@@ -528,6 +536,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"UnifiedGroceryApp/Preview Content\"";
@@ -544,8 +553,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = travtran.UnifiedGroceryApp;
+				PRODUCT_BUNDLE_IDENTIFIER = josephyu.UnifiedGroceryApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -557,6 +567,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"UnifiedGroceryApp/Preview Content\"";
@@ -573,8 +584,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = travtran.UnifiedGroceryApp;
+				PRODUCT_BUNDLE_IDENTIFIER = josephyu.UnifiedGroceryApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

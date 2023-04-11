@@ -8,13 +8,15 @@
 import Foundation
 import Firebase
 
-class ViewModel: ObservableObject {
+class FridgeViewModel: ObservableObject {
     
-    @Published var list = [Recipe]()
+    @Published var fridge = [Ingredient]()
     
-    func updateData(recipeToUpdate: Recipe) {
+    var user = "travtran"
+    
+    func updateData(ingredientToUpdate: Ingredient) {
         let db = Firestore.firestore()
-        db.collection("recipes").document(recipeToUpdate.id).setData(["title": "Updated: \(recipeToUpdate.title)"], merge: true) { error in
+        db.collection("users").document(user).collection("fridge").document(ingredientToUpdate.id).setData(["ingredient": "Updated: \(ingredientToUpdate.ingredient)"], merge: true) { error in
             
             if error == nil {
                 self.getData()
@@ -22,11 +24,11 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func deleteData(recipeToDelete: Recipe) {
+    func deleteData(ingredientToDelete: Ingredient) {
         
         let db = Firestore.firestore()
         
-        db.collection("recipes").document(recipeToDelete.id).delete { error in
+        db.collection("users").document(user).collection("fridge").document(ingredientToDelete.id).delete { error in
             
             if error == nil {
                 
@@ -34,8 +36,8 @@ class ViewModel: ObservableObject {
                 
                 DispatchQueue.main.async {
                     
-                    self.list.removeAll { recipe in
-                        return recipe.id == recipeToDelete.id
+                    self.fridge.removeAll { ingredient in
+                        return ingredient.id == ingredientToDelete.id
                     }
                     
                 }
@@ -45,13 +47,13 @@ class ViewModel: ObservableObject {
         }
     }
     
-    func addData(title: String, category: String) {
+    func addData(ingredient: String, category: String, amount: Float, amount_unit: String) {
         
         // get reference
         let db = Firestore.firestore()
         
         // add document
-        db.collection("recipes").addDocument(data: ["title": title, "category": category]) {
+        db.collection("users").document(user).collection("fridge").addDocument(data: ["ingredient": ingredient, "category": category, "amount": amount, "amount-unit": amount_unit]) {
             error in
             
             if error == nil {
@@ -70,7 +72,7 @@ class ViewModel: ObservableObject {
         
         // Read the documents
         
-        db.collection("recipes").getDocuments { snapshot, error in
+        db.collection("users").document(user).collection("fridge").getDocuments { snapshot, error in
             // check for errors
             if error == nil {
                 
@@ -79,22 +81,20 @@ class ViewModel: ObservableObject {
                     DispatchQueue.main.async {
                         
                         // get all docs and create todos
-                        self.list = snapshot.documents.map { d in
+                        self.fridge = snapshot.documents.map { d in
                             
-                            print(d["title"] as? String ?? "")
+                            print(d["ingredient"] as? String ?? "")
                             
-                            return Recipe(id: d.documentID,
-                                        title: d["title"] as? String ?? "",
+                            return Ingredient(id: d.documentID,
+                                        ingredient: d["ingredient"] as? String ?? "",
                                         category: d["category"] as? String ?? "",
-                                        directions: d["directions"] as? String ?? "",
-                                        ingredient01: d["ingredient01"] as? String ?? "",
-                                        unit01: d["unit01"] as? String ?? "",
-                                        qty01: d["qty01"] as? Float ?? 0.0
+                                        amount: d["directions"] as? Float ?? 0.0,
+                                        amount_unit: d["amount-unit"] as? String ?? ""
                             )
                         }
                         
-                        self.list.sort {
-                            $0.title < $1.title
+                        self.fridge.sort {
+                            $0.ingredient < $1.ingredient
                         }
                         
                         

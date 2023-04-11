@@ -23,6 +23,28 @@ struct RecipeView: View {
         
         ZStack (alignment: .top) {
             
+//            List(model.list) { item in
+//                HStack {
+//                    Text(item.title)
+//                    Spacer()
+//
+//                    Button(action: {
+//                        model.updateData(recipeToUpdate: item)
+//                    }, label: {
+//                        Image(systemName: "pencil")
+//                    })
+//                    .buttonStyle(BorderlessButtonStyle())
+//
+//                    Button(action: {
+//                        model.deleteData(recipeToDelete: item)
+//                    }, label: {
+//                        Image(systemName: "minus.circle")
+//                    }).buttonStyle(BorderlessButtonStyle())
+//                }
+//
+//
+//            }
+            
             Color("redcolor").ignoresSafeArea()
             
             Color("bluecolor").edgesIgnoringSafeArea(.top)

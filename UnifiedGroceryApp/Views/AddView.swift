@@ -21,7 +21,7 @@ struct AddView: View {
     var categories = ["Fruits", "Vegetables", "Grains", "Protein", "Dairy", "Condiments", "Other"]
     
     var body: some View {
-        ZStack {
+        ZStack (alignment: .top) {
             
             Color("bluecolor").edgesIgnoringSafeArea(.all)
             

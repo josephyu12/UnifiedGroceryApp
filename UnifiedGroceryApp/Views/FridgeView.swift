@@ -12,6 +12,7 @@ struct FridgeView: View {
     @ObservedObject var fridgemodel = FridgeViewModel()
     
     var body: some View {
+
         ZStack {
             
             Color("bluecolor").edgesIgnoringSafeArea(.all)

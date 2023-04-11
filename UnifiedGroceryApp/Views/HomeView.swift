@@ -12,16 +12,6 @@ import UIKit
 
 struct HomeView: View {
     
-    private var symbols = ["keyboard", "hifispeaker.fill", "printer.fill", "tv.fill", "desktopcomputer", "headphones", "tv.music.note", "mic", "plus.bubble", "video"]
-    
-    private var threeColumnGrid = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
-    
-    private var colors: [Color] = [.yellow, .purple, .green]
-    
-    
-    let timeZone = Int(TimeZone.current.secondsFromGMT())
-    let currentDateTime = Date()
-    
     var body: some View {
         
         ZStack (alignment: .top) {

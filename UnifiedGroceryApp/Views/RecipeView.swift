@@ -17,7 +17,7 @@ struct RecipeView: View {
     let columns = 5
     
     let numbers = Array(1...10)
-    
+
     
     var body: some View {
         
@@ -26,23 +26,29 @@ struct RecipeView: View {
             Color("redcolor").ignoresSafeArea()
             
             Color("bluecolor").edgesIgnoringSafeArea(.top)
-            
+
             VStack {
-                Text("Recipes").font(.largeTitle).padding(.top)
                 
-                HStack {
+                    Text("Recipes").font(.largeTitle).padding(.top)
                     
-                    List(model.list) { item in
+                    HStack {
                         
-                        Text(item.title)
-                        Color("bluecolor")
-                        
+                        List(model.list) { item in
+                            
+                            Text(item.title)
+                       
+                                .listItemTint(.black)
+                         
+                                .listRowSeparator(.hidden)
+                          
+                                .listRowBackground(Color("bluecolor"))
+                                
                     }
-                    
+                        
                     
                 }
+                    
                 
-
             }
             
         }

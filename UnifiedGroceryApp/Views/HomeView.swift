@@ -37,7 +37,7 @@ struct HomeView: View {
                     if ((Int(currentDateTime.timeIntervalSince1970)+timeZone)%86400<43200) {
                         Text("Good Morning")
                             .font(.largeTitle).padding(.top)
-                    } else if ((Int(currentDateTime.timeIntervalSince1970)+timeZone)%86400>1) {
+                    } else if ((Int(currentDateTime.timeIntervalSince1970)+timeZone)%86400<61200) {
                         Text("Good Afternoon").font(.largeTitle).padding(.top)
                     } else {
                         Text("Good Evening").font(.largeTitle).padding(.top)

@@ -5,7 +5,31 @@
 //  Created by Joseph Yu on 1/27/23.
 //
 
+// 1. Fix keyboard dismissal
+// 2. Fridge Seperation
+// 3. Make Add View Better, Camera Detection?
+// 4. Edit Ingredient Item
+
 import SwiftUI
+
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+
+struct Background<Content: View>: View {
+    private var content: Content
+
+    init(@ViewBuilder content: @escaping () -> Content) {
+        self.content = content()
+    }
+
+    var body: some View {
+        Color("bluecolor").edgesIgnoringSafeArea(.all)
+            .overlay(content)
+    }
+}
 
 struct AddView: View {
     
@@ -21,17 +45,16 @@ struct AddView: View {
     var categories = ["Fruits", "Vegetables", "Grains", "Protein", "Dairy", "Condiments", "Other"]
     
     var body: some View {
-        ZStack (alignment: .top) {
+        
+//        ZStack (alignment: .top) {
+        
+        Background {
             
-            Color("bluecolor").edgesIgnoringSafeArea(.all)
-            
-            VStack {
-                
-                Divider()
-                
                 VStack (spacing: 10) {
                     
-                    TextField("Ingredient Name", text: $ingredient).textFieldStyle(RoundedBorderTextFieldStyle())
+                    TextField("Ingredient Name", text: $ingredient) {
+                        self.endEditing() }.textFieldStyle(RoundedBorderTextFieldStyle())
+                    
                     
                     Picker("Category", selection: $selectedCategory) {
                         ForEach(categories, id: \.self) {
@@ -41,7 +64,7 @@ struct AddView: View {
                     
                     TextField("Amount", text: $amount)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .keyboardType(.numberPad)
+                        .keyboardType(.decimalPad)
                     
                     TextField("Amount Unit", text: $amount_unit)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -61,12 +84,18 @@ struct AddView: View {
                 }
                 .padding()
                 
-            }
             
+        }.onTapGesture {
+            self.endEditing()
+        }
+    }
+    
+    private func endEditing() {
+            UIApplication.shared.endEditing()
         }
         
     }
-}
+
 
 struct AddView_Previews: PreviewProvider {
     static var previews: some View {

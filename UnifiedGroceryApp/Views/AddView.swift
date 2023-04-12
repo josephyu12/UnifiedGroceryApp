@@ -41,7 +41,7 @@ struct AddView: View {
                     
                     TextField("Amount", text: $amount)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .keyboardType(.numberPad)
+                        .keyboardType(.decimalPad)
                     
                     TextField("Amount Unit", text: $amount_unit)
                         .textFieldStyle(RoundedBorderTextFieldStyle())

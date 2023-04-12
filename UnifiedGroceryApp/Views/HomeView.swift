@@ -3,24 +3,41 @@
 //  UnifiedGroceryApp
 //
 //  Created by Joseph Yu on 1/27/23.
-//
+// expiration dates
+// dinner/breakfast/lunch with missing ingredients
+// top 3
 
 import SwiftUI
 // to get date and time
 import UIKit
 
+struct TransparentGroupBox: GroupBoxStyle {
+    func makeBody(configuration: Configuration) -> some View {
+            VStack {
+                HStack {
+                    configuration.label
+                        .font(.headline)
+                    Spacer()
+                }
+                
+                configuration.content
+            }
+            .padding()
+            .background(RoundedRectangle(cornerRadius: 8, style: .continuous)
+                .fill(Color("redcolor")))
+        }
+}
+
+
 
 struct HomeView: View {
     
-    private var symbols = ["keyboard", "hifispeaker.fill", "printer.fill", "tv.fill", "desktopcomputer", "headphones", "tv.music.note", "mic", "plus.bubble", "video"]
-
-        private var threeColumnGrid = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
-
-        private var colors: [Color] = [.yellow, .purple, .green]
-
-
-        let timeZone = Int(TimeZone.current.secondsFromGMT())
-        let currentDateTime = Date()
+    let timeZone = Int(TimeZone.current.secondsFromGMT())
+    let currentDateTime = Date()
+    let data = (1...100).map { "Item \($0)" }
+    let columns = [
+        GridItem(.flexible())
+    ]
     
     var body: some View {
         
@@ -43,14 +60,47 @@ struct HomeView: View {
                         Text("Good Evening").font(.largeTitle).padding(.top)
                     }
                     
-                    LazyVGrid(columns: threeColumnGrid, spacing: 20) {
-                        ForEach((0...9999), id: \.self) {
-                            Image(systemName: symbols[$0 % symbols.count])
-                                .font(.system(size: 30))
-                                .frame(width: 50, height: 50)
-                                .background(colors[$0 % colors.count])
-                                .cornerRadius(10)
+                    LazyVGrid(columns: columns, spacing: 20) {
+                        if ((Int(currentDateTime.timeIntervalSince1970)+timeZone)%86400<43200) {
+                            GroupBox(label: Label("Breakfast", systemImage: "fork.knife.fill").foregroundColor(Color("redcolor")).font(.largeTitle)) {
+                                Text("Breakfast Recommendation")
+                            }
+                            .padding(.horizontal)
+                            GroupBox(label: Label("Lunch", systemImage: "heart.fill").foregroundColor(.red).font(.largeTitle)) {
+                                Text("Lunch Recommendation")
+                            }
+                            .padding(.horizontal)
+                            GroupBox(label: Label("Dinner", systemImage: "heart.fill").foregroundColor(.red).font(.largeTitle)) {
+                                Text("Dinner Recommendation")
+                            }
+                            .padding(.horizontal)
+                        } else if ((Int(currentDateTime.timeIntervalSince1970)+timeZone)%86400<61200) {
+                            GroupBox(label: Label("Lunch", systemImage: "fork.knife").foregroundColor(Color("bluecolor")).font(.largeTitle)) {
+                                Text("Lunch Recommendation")
+                            }
+                            .groupBoxStyle(TransparentGroupBox())
+                            .padding(.horizontal)
+                            
+                            GroupBox(label: Label("Dinner", systemImage: "heart.fill").foregroundColor(.red).font(.largeTitle)) {
+                                Text("Dinner Recommendation")
+                            }
+                            .padding(.horizontal)
+                            
+                            
+                            
+                            
+                        } else {
+                            GroupBox(label: Label("Dinner", systemImage: "heart.fill").foregroundColor(.red).font(.largeTitle)) {
+                                Text("Dinner Recommendation")
+                            }
+                            .padding(.horizontal)
                         }
+                        GroupBox(label: Label("Expiring Ingredients", systemImage: "heart.fill").foregroundColor(.red).font(.largeTitle)) {
+                            Text("These ingredients are going to expire")
+                        }
+                        .padding(.horizontal)
+                        
+                        
                     }
                     
                 }

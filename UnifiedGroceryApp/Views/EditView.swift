@@ -24,14 +24,14 @@ struct Background<Content: View>: View {
     init(@ViewBuilder content: @escaping () -> Content) {
         self.content = content()
     }
-
+ 
     var body: some View {
         Color("bluecolor").edgesIgnoringSafeArea(.all)
             .overlay(content)
     }
 }
 
-struct AddView: View {
+struct EditView: View {
     
     @ObservedObject var fridgemodel = FridgeViewModel()
     
@@ -39,6 +39,7 @@ struct AddView: View {
     @State var category = ""
     @State var amount = ""
     @State var amount_unit = ""
+    @State var expiration = Date()
     
     @State var selectedCategory = ""
     
@@ -69,13 +70,17 @@ struct AddView: View {
                     TextField("Amount Unit", text: $amount_unit)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     
+                    DatePicker("Expiration Date", selection: $expiration, in: Date()..., displayedComponents: .date)
+                    
                     Button(action: {
-                        fridgemodel.addData(ingredient: ingredient, category: category, amount: amount as? Float ?? 0.0, amount_unit: amount_unit)
+                        fridgemodel.addData(ingredient: ingredient, category: category, amount: amount as? Float ?? 0.0, amount_unit: amount_unit,
+                            expiration: expiration)
                         
                         ingredient = ""
                         category = ""
                         amount = ""
                         amount_unit = ""
+                        expiration = Date()
                         
                     }, label: {
                         Text("Add Ingredient to Fridge")
@@ -97,8 +102,8 @@ struct AddView: View {
     }
 
 
-struct AddView_Previews: PreviewProvider {
+struct EditView_Previews: PreviewProvider {
     static var previews: some View {
-        AddView()
+        EditView()
     }
 }

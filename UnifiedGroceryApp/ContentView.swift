@@ -59,7 +59,7 @@ struct ContentView: View {
                             Image(systemName: "takeoutbag.and.cup.and.straw.fill")
                             Text("Fridge")
                         }
-                    AddView()
+                    EditView()
                         .tabItem() {
                             Image(systemName: "plus")
                             Text("Add")

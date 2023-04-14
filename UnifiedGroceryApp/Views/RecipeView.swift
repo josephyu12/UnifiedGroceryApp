@@ -51,20 +51,30 @@ struct RecipeView: View {
 
             VStack {
                 
-                    Text("Recipes").font(.largeTitle).padding(.top)
+                NavigationView {
                     
-                    HStack {
+                    VStack {
                         
-                        List(model.list) { item in
                             
-                            Text(item.title)
-                       
-                                .listItemTint(.black)
-                         
-                                .listRowSeparator(.hidden)
-                          
-                                .listRowBackground(Color("bluecolor"))
+                            Text("Recipes").font(.largeTitle).padding(.top)
+                            
+                        
+                        
+                        HStack {
+                            
+                            List(model.list) { item in
                                 
+                                Text(item.title)
+                                
+                                    .listItemTint(.black)
+                                
+                                    .listRowSeparator(.hidden)
+                                
+                                    .listRowBackground(Color("bluecolor"))
+                                
+                            }
+                            
+                        }
                     }
                         
                     

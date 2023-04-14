@@ -47,13 +47,13 @@ class FridgeViewModel: ObservableObject {
         }
     }
     
-    func addData(ingredient: String, category: String, amount: Float, amount_unit: String) {
+    func addData(ingredient: String, category: String, amount: Float, amount_unit: String, expiration: Date) {
         
         // get reference
         let db = Firestore.firestore()
         
         // add document
-        db.collection("users").document(user).collection("fridge").addDocument(data: ["ingredient": ingredient, "category": category, "amount": amount, "amount-unit": amount_unit]) {
+        db.collection("users").document(user).collection("fridge").addDocument(data: ["ingredient": ingredient, "category": category, "amount": amount, "amount-unit": amount_unit, "expiration": expiration]) {
             error in
             
             if error == nil {
@@ -89,7 +89,8 @@ class FridgeViewModel: ObservableObject {
                                         ingredient: d["ingredient"] as? String ?? "",
                                         category: d["category"] as? String ?? "",
                                         amount: d["directions"] as? Float ?? 0.0,
-                                        amount_unit: d["amount-unit"] as? String ?? ""
+                                        amount_unit: d["amount-unit"] as? String ?? "",
+                                        expiration: d["expiration"] as? Date
                             )
                         }
                         

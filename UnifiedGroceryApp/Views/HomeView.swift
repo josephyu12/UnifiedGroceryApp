@@ -13,19 +13,19 @@ import UIKit
 
 struct TransparentGroupBox: GroupBoxStyle {
     func makeBody(configuration: Configuration) -> some View {
-            VStack {
-                HStack {
-                    configuration.label
-                        .font(.headline)
-                    Spacer()
-                }
-                
-                configuration.content
+        VStack {
+            HStack {
+                configuration.label
+                    .font(.headline)
+                Spacer()
             }
-            .padding()
-            .background(RoundedRectangle(cornerRadius: 8, style: .continuous)
-                .fill(Color("redcolor")))
+            
+            configuration.content
         }
+        .padding(8)
+        .background(RoundedRectangle(cornerRadius: 8, style: .continuous)
+            .fill(Color("redcolor")))
+    }
 }
 
 
@@ -61,43 +61,27 @@ struct HomeView: View {
                     }
                     
                     LazyVGrid(columns: columns, spacing: 20) {
-                        if ((Int(currentDateTime.timeIntervalSince1970)+timeZone)%86400<43200) {
-                            GroupBox(label: Label("Breakfast", systemImage: "fork.knife.fill").foregroundColor(Color("redcolor")).font(.largeTitle)) {
-                                Text("Breakfast Recommendation")
-                            }
-                            .padding(.horizontal)
-                            GroupBox(label: Label("Lunch", systemImage: "heart.fill").foregroundColor(.red).font(.largeTitle)) {
-                                Text("Lunch Recommendation")
-                            }
-                            .padding(.horizontal)
-                            GroupBox(label: Label("Dinner", systemImage: "heart.fill").foregroundColor(.red).font(.largeTitle)) {
-                                Text("Dinner Recommendation")
-                            }
-                            .padding(.horizontal)
-                        } else if ((Int(currentDateTime.timeIntervalSince1970)+timeZone)%86400<61200) {
-                            GroupBox(label: Label("Lunch", systemImage: "fork.knife").foregroundColor(Color("bluecolor")).font(.largeTitle)) {
-                                Text("Lunch Recommendation")
-                            }
-                            .groupBoxStyle(TransparentGroupBox())
-                            .padding(.horizontal)
-                            
-                            GroupBox(label: Label("Dinner", systemImage: "heart.fill").foregroundColor(.red).font(.largeTitle)) {
-                                Text("Dinner Recommendation")
-                            }
-                            .padding(.horizontal)
-                            
-                            
-                            
-                            
-                        } else {
-                            GroupBox(label: Label("Dinner", systemImage: "heart.fill").foregroundColor(.red).font(.largeTitle)) {
-                                Text("Dinner Recommendation")
-                            }
-                            .padding(.horizontal)
+                        
+                        GroupBox(label: Label("Breakfast", systemImage: "fork.knife").foregroundColor(.black).font(.largeTitle)) {
+                            Text("Breakfast Recommendation")
                         }
-                        GroupBox(label: Label("Expiring Ingredients", systemImage: "heart.fill").foregroundColor(.red).font(.largeTitle)) {
+                        .groupBoxStyle(TransparentGroupBox())
+                        .padding(.horizontal)
+                        GroupBox(label: Label("Lunch", systemImage: "fork.knife").foregroundColor(.black).font(.largeTitle)) {
+                            Text("Lunch Recommendation")
+                        }
+                        .groupBoxStyle(TransparentGroupBox())
+                        .padding(.horizontal)
+                        GroupBox(label: Label("Dinner", systemImage: "fork.knife").foregroundColor(.black).font(.largeTitle)) {
+                            Text("Dinner Recommendation")
+                        }
+                        .groupBoxStyle(TransparentGroupBox())
+                        .padding(.horizontal)
+                        
+                        GroupBox(label: Label("Expiring Ingredients", systemImage: "fork.knife").foregroundColor(.black).font(.largeTitle)) {
                             Text("These ingredients are going to expire")
                         }
+                        .groupBoxStyle(TransparentGroupBox())
                         .padding(.horizontal)
                         
                         

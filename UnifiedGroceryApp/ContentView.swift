@@ -44,9 +44,9 @@ struct ContentView: View {
             TabView {
                 Group {
                     HomeView()
-                        .padding(0.0)
                         .tabItem() {
                             Image(systemName: "house")
+                                
                             Text("Home")
                         }
                     RecipeView()
@@ -63,13 +63,10 @@ struct ContentView: View {
                         .tabItem() {
                             Image(systemName: "plus")
                             Text("Add")
-                            
                         }
                 }
-                
                 .toolbar(.visible, for: .tabBar)
                 .toolbarBackground(Color("redcolor"), for: .tabBar)
-                .toolbarColorScheme(.light, for: .tabBar)
             }
         }
     }

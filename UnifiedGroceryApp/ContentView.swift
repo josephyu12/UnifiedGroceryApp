@@ -42,12 +42,15 @@ struct ContentView: View {
             .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight/20)
             
             TabView {
+                
                 Group {
+                    
                     HomeView()
                         .tabItem() {
                             Image(systemName: "house")
-                                
+                            
                             Text("Home")
+                            
                         }
                     RecipeView()
                         .tabItem() {
@@ -55,7 +58,9 @@ struct ContentView: View {
                             Text("Recipes")
                         }
                     FridgeView()
+                    
                         .tabItem() {
+                            
                             Image(systemName: "takeoutbag.and.cup.and.straw.fill")
                             Text("Fridge")
                         }
@@ -65,11 +70,17 @@ struct ContentView: View {
                             Text("Add")
                         }
                 }
-                .toolbar(.visible, for: .tabBar)
-                .toolbarBackground(Color("redcolor"), for: .tabBar)
+//                onAppear {
+//                    UITabBar.appearance().unselectedItemTintColor = UIColor(Color.purple)
+//                }
+//                .toolbar(.visible, for: .tabBar)
+//                .toolbarBackground(Color("redcolor"), for: .tabBar)
+                
+                
             }
         }
     }
+    
 }
 
 

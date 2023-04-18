@@ -88,7 +88,7 @@ class FridgeViewModel: ObservableObject {
                             return Ingredient(id: d.documentID,
                                         ingredient: d["ingredient"] as? String ?? "",
                                         category: d["category"] as? String ?? "",
-                                        amount: d["directions"] as? Float ?? 0.0,
+                                        amount: d["amount"] as? Float ?? 0.0,
                                         amount_unit: d["amount-unit"] as? String ?? "",
                                         expiration: d["expiration"] as? Date
                             )

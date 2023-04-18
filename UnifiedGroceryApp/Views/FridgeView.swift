@@ -19,7 +19,18 @@ struct FridgeView: View {
             
             List(fridgemodel.fridge) { item in
                 HStack {
-                    Text(item.ingredient)
+                    VStack(alignment: .leading) {
+                        Text(item.ingredient).font(.title2)
+                        HStack {
+                            Text(String(format: "%.1f", item.amount ?? 0))
+                            if (item.amount_unit == nil || item.amount_unit == "") {
+                            } else {
+                                Text(item.amount_unit ?? "")
+                            }
+                        }
+                        
+                    }
+                    
                     Spacer()
                     
                     Button(action: {

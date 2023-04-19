@@ -73,8 +73,6 @@ struct ContentView: View {
                             Text("Add")
                         }
                 }
-                //.unselectedItemTintColor(UIColor(Color.purple))
-                //.toolbar(.visible, for: .tabBar)
                 //.toolbarBackground(Color("redcolor"), for: .tabBar)
             }
             

@@ -13,8 +13,12 @@ extension UIScreen{
     static let screenSize = UIScreen.main.bounds.size
 }
 
+
+
 struct ContentView: View {
-    
+    init() {
+        UITabBar.appearance().unselectedItemTintColor = UIColor.white
+    }
     var body: some View {
         
         VStack(spacing: 0) {
@@ -48,7 +52,6 @@ struct ContentView: View {
                     HomeView()
                         .tabItem() {
                             Image(systemName: "house")
-                            
                             Text("Home")
                             
                         }
@@ -70,14 +73,11 @@ struct ContentView: View {
                             Text("Add")
                         }
                 }
-//                onAppear {
-//                    UITabBar.appearance().unselectedItemTintColor = UIColor(Color.purple)
-//                }
-//                .toolbar(.visible, for: .tabBar)
-//                .toolbarBackground(Color("redcolor"), for: .tabBar)
-                
-                
+                //.unselectedItemTintColor(UIColor(Color.purple))
+                //.toolbar(.visible, for: .tabBar)
+                //.toolbarBackground(Color("redcolor"), for: .tabBar)
             }
+            
         }
     }
     

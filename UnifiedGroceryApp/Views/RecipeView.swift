@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct RecipeView: View {
     
     @ObservedObject var model = ViewModel()
@@ -34,13 +33,22 @@ struct RecipeView: View {
                     Text("Recipes").font(.largeTitle).padding(.top)
                     Spacer()
                     ForEach(model.list) { item in
-                        Text(item.title)
+                        
+                        GroupBox(label: Label(item.title, systemImage: "fork.knife").foregroundColor(.black)) {
+                        }
+                        .groupBoxStyle(TransparentGroupBox())
+                        .padding(.horizontal)
+                        
+                        
+                        
+                        
+                        
                     }
                     
                     
                 }
                 
-            }.frame(height: UIScreen.screenHeight-UIScreen.screenHeight/20)
+            }
             
         }
         

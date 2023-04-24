@@ -13,8 +13,13 @@ extension UIScreen{
     static let screenSize = UIScreen.main.bounds.size
 }
 
+
+
 struct ContentView: View {
-    
+    init() {
+        UITabBar.appearance().unselectedItemTintColor = UIColor.white
+        UITabBar.appearance().barTintColor = UIColor(Color("redcolor"))
+    }
     var body: some View {
         
         VStack(spacing: 0) {
@@ -42,12 +47,14 @@ struct ContentView: View {
             .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight/20)
             
             TabView {
+                
                 Group {
+                    
                     HomeView()
-                        .padding(0.0)
                         .tabItem() {
                             Image(systemName: "house")
                             Text("Home")
+                            
                         }
                     RecipeView()
                         .tabItem() {
@@ -55,7 +62,9 @@ struct ContentView: View {
                             Text("Recipes")
                         }
                     FridgeView()
+                    
                         .tabItem() {
+                            
                             Image(systemName: "takeoutbag.and.cup.and.straw.fill")
                             Text("Fridge")
                         }
@@ -63,16 +72,13 @@ struct ContentView: View {
                         .tabItem() {
                             Image(systemName: "plus")
                             Text("Add")
-                            
                         }
                 }
-                
-                .toolbar(.visible, for: .tabBar)
-                .toolbarBackground(Color("redcolor"), for: .tabBar)
-                .toolbarColorScheme(.light, for: .tabBar)
             }
+            
         }
     }
+    
 }
 
 

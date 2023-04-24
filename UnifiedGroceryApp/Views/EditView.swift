@@ -41,9 +41,7 @@ struct EditView: View {
     @State var amount_unit = ""
     @State var expiration = Date()
     
-    @State var selectedCategory = ""
-    
-    var categories = ["Fruits", "Vegetables", "Grains", "Protein", "Dairy", "Condiments", "Other"]
+    var categories = ["Select a Category", "Fruits", "Vegetables", "Grains", "Protein", "Dairy", "Condiments", "Other"]
     
     var body: some View {
         
@@ -57,7 +55,7 @@ struct EditView: View {
                         self.endEditing() }.textFieldStyle(RoundedBorderTextFieldStyle())
                     
                     
-                    Picker("Category", selection: $selectedCategory) {
+                    Picker("Category", selection: $category) {
                         ForEach(categories, id: \.self) {
                             Text($0)
                         }
@@ -73,7 +71,11 @@ struct EditView: View {
                     DatePicker("Expiration Date", selection: $expiration, in: Date()..., displayedComponents: .date)
                     
                     Button(action: {
-                        fridgemodel.addData(ingredient: ingredient, category: category, amount: amount as? Float ?? 0.0, amount_unit: amount_unit,
+                        
+                        print(ingredient)
+                        print(category)
+                        
+                        fridgemodel.addData(ingredient: ingredient, category: category, amount: Float(amount) ?? 0, amount_unit: amount_unit,
                             expiration: expiration)
                         
                         ingredient = ""
@@ -84,7 +86,7 @@ struct EditView: View {
                         
                     }, label: {
                         Text("Add Ingredient to Fridge")
-                    }).disabled(ingredient.isEmpty)
+                    }).disabled(ingredient.isEmpty || category == "")
                     
                 }
                 .padding()

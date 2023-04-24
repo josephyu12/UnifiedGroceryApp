@@ -38,7 +38,6 @@
 		F2381C7429C8DFA000BEA098 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2381C7329C8DFA000BEA098 /* EditView.swift */; };
 		F2381C7629C8DFB100BEA098 /* FridgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2381C7529C8DFB100BEA098 /* FridgeView.swift */; };
 		F2D1866629DDF731004B1292 /* RecipeObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D1866529DDF731004B1292 /* RecipeObjectView.swift */; };
-		F2F2C8A929CA2BD800BC19A2 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2F2C8A829CA2BD800BC19A2 /* HeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,7 +78,6 @@
 		F2381C7329C8DFA000BEA098 /* EditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		F2381C7529C8DFB100BEA098 /* FridgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FridgeView.swift; sourceTree = "<group>"; };
 		F2D1866529DDF731004B1292 /* RecipeObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeObjectView.swift; sourceTree = "<group>"; };
-		F2F2C8A829CA2BD800BC19A2 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,7 +147,6 @@
 				7CE54C8A2984179F00676743 /* UnifiedGroceryAppApp.swift */,
 				F2381C7029C8DF7000BEA098 /* Views */,
 				7CE54C8C2984179F00676743 /* ContentView.swift */,
-				F2F2C8A829CA2BD800BC19A2 /* HeaderView.swift */,
 				7CE54C8E298417A000676743 /* Assets.xcassets */,
 				7CED8D9729DB54140051A263 /* Models */,
 				7CE54C90298417A000676743 /* Preview Content */,
@@ -375,7 +372,6 @@
 				7CE54C8B2984179F00676743 /* UnifiedGroceryAppApp.swift in Sources */,
 				F2381C7629C8DFB100BEA098 /* FridgeView.swift in Sources */,
 				7C86724429E490C6000C492F /* FridgeViewModel.swift in Sources */,
-				F2F2C8A929CA2BD800BC19A2 /* HeaderView.swift in Sources */,
 				7C549DA629DC796000DEEC91 /* Recipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

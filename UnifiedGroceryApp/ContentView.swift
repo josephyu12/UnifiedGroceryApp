@@ -15,6 +15,11 @@ extension UIScreen{
 
 struct ContentView: View {
     
+    init() {
+        UITabBar.appearance().unselectedItemTintColor = UIColor.white
+        UITabBar.appearance().barTintColor = UIColor(Color("redcolor"))
+    }
+    
     var body: some View {
         
         VStack(spacing: 0) {
@@ -67,9 +72,9 @@ struct ContentView: View {
                         }
                 }
                 
-                .toolbar(.visible, for: .tabBar)
-                .toolbarBackground(Color("redcolor"), for: .tabBar)
-                .toolbarColorScheme(.light, for: .tabBar)
+//                .toolbar(.visible, for: .tabBar)
+//                .toolbarBackground(Color("redcolor"), for: .tabBar)
+//                .toolbarColorScheme(.light, for: .tabBar)
             }
         }
     }

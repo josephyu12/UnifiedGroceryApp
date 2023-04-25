@@ -7,6 +7,17 @@
 
 import SwiftUI
 
+//extension Float {
+//    var clean: String {
+//
+//        if (self.truncatingRemainder(dividingBy: 1) == 0) {
+//            return String(format: "%.0f", self)
+//        } else {
+//            return String(format: "%.1f", self)
+//        }
+//    }
+//}
+
 struct FridgeView: View {
     
     @ObservedObject var fridgemodel = FridgeViewModel()
@@ -42,11 +53,12 @@ struct FridgeView: View {
                                         
                                         HStack {
                                             
-                                            Text(String(format: "%.1f", item.amount ?? 0))
-                                            if (item.amount_unit == nil || item.amount_unit == "") {
-                                            } else {
-                                                Text(item.amount_unit ?? "")
-                                            }
+//                                            Text(item.amount.clean)
+//                                            Text(String(format: "%.0f", item.amount))
+//                                            if (item.amount_unit == nil || item.amount_unit == "") {
+//                                            } else {
+//                                                Text(item.amount_unit)
+//                                            }
                                         }
                                         
                                     }

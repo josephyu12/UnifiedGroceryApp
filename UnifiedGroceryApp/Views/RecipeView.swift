@@ -4,10 +4,7 @@
 //
 //  Created by Joseph Yu on 1/27/23.
 //
-
 import SwiftUI
-
-
 struct RecipeView: View {
     
     @ObservedObject var model = ViewModel()
@@ -17,69 +14,37 @@ struct RecipeView: View {
     let columns = 5
     
     let numbers = Array(1...10)
-
+    
     
     var body: some View {
         
         ZStack (alignment: .top) {
             
-//            List(model.list) { item in
-//                HStack {
-//                    Text(item.title)
-//                    Spacer()
-//
-//                    Button(action: {
-//                        model.updateData(recipeToUpdate: item)
-//                    }, label: {
-//                        Image(systemName: "pencil")
-//                    })
-//                    .buttonStyle(BorderlessButtonStyle())
-//
-//                    Button(action: {
-//                        model.deleteData(recipeToDelete: item)
-//                    }, label: {
-//                        Image(systemName: "minus.circle")
-//                    }).buttonStyle(BorderlessButtonStyle())
-//                }
-//
-//
-//            }
-            
             Color("redcolor").ignoresSafeArea()
             
             Color("bluecolor").edgesIgnoringSafeArea(.top)
-
-            VStack {
+            
+            ScrollView(showsIndicators: false) {
                 
-                NavigationView {
+                VStack {
                     
-                    VStack {
+                    Text("Recipes").font(.largeTitle).padding(.top)
+                    Spacer()
+                    ForEach(model.list) { item in
                         
-                            
-                            Text("Recipes").font(.largeTitle).padding(.top)
-                            
-                        
-                        
-                        HStack {
-                            
-                            List(model.list) { item in
-                                
-                                Text(item.title)
-                                
-                                    .listItemTint(.black)
-                                
-                                    .listRowSeparator(.hidden)
-                                
-                                    .listRowBackground(Color("bluecolor"))
-                                
-                            }
-                            
+                        GroupBox(label: Label(item.title, systemImage: "fork.knife").foregroundColor(.black)) {
                         }
-                    }
+                        .groupBoxStyle(TransparentGroupBox())
+                        .padding(.horizontal)
                         
+                        
+                        
+                        
+                        
+                    }
+                    
                     
                 }
-                    
                 
             }
             
@@ -93,8 +58,6 @@ struct RecipeView: View {
     }
     
 }
-
-
 struct RecipeView_Previews: PreviewProvider {
     static var previews: some View {
         RecipeView()

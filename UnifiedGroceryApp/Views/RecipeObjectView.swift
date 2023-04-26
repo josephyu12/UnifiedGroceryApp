@@ -23,13 +23,15 @@ struct RecipeObjectView: View {
                 
                 VStack {
                     
-                    HStack {
-                        Button(action: {
-                            print("this is the action run")
-                        }) {
-                            Image(systemName: "chevron.backward").foregroundColor(Color.black).padding(.bottom, 0.0).font(.system(size:24))
-                        }
-                    }.frame(alignment: .leading)
+                    //HStack {
+                        
+//                        Button(action: {
+//                            print("this is the action run")
+//                        }) {
+//                            Image(systemName: "chevron.backward").foregroundColor(Color.black).padding(.bottom, 0.0).font(.system(size:24))
+//                        }.padding(.leading)
+//                        Spacer()
+                    // }
                     
                     
                     Text("Good Morning")

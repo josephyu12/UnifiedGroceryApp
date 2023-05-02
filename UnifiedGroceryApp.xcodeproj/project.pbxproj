@@ -38,6 +38,8 @@
 		F2381C7429C8DFA000BEA098 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2381C7329C8DFA000BEA098 /* EditView.swift */; };
 		F2381C7629C8DFB100BEA098 /* FridgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2381C7529C8DFB100BEA098 /* FridgeView.swift */; };
 		F2D1866629DDF731004B1292 /* RecipeObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D1866529DDF731004B1292 /* RecipeObjectView.swift */; };
+		F2DCE4DC2A016E5700841739 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DCE4DB2A016E5700841739 /* AddView.swift */; };
+		F2DCE4DE2A016E6B00841739 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DCE4DD2A016E6B00841739 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,8 @@
 		F2381C7329C8DFA000BEA098 /* EditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		F2381C7529C8DFB100BEA098 /* FridgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FridgeView.swift; sourceTree = "<group>"; };
 		F2D1866529DDF731004B1292 /* RecipeObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeObjectView.swift; sourceTree = "<group>"; };
+		F2DCE4DB2A016E5700841739 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		F2DCE4DD2A016E6B00841739 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,8 @@
 		7CE54C7E2984179F00676743 = {
 			isa = PBXGroup;
 			children = (
+				F2DCE4DB2A016E5700841739 /* AddView.swift */,
+				F2DCE4DD2A016E6B00841739 /* SettingsView.swift */,
 				7CE54C892984179F00676743 /* UnifiedGroceryApp */,
 				7CE54C9A298417A000676743 /* UnifiedGroceryAppTests */,
 				7CE54CA4298417A000676743 /* UnifiedGroceryAppUITests */,
@@ -370,9 +376,11 @@
 				F2D1866629DDF731004B1292 /* RecipeObjectView.swift in Sources */,
 				7CE54C8D2984179F00676743 /* ContentView.swift in Sources */,
 				7CE54C8B2984179F00676743 /* UnifiedGroceryAppApp.swift in Sources */,
+				F2DCE4DC2A016E5700841739 /* AddView.swift in Sources */,
 				F2381C7629C8DFB100BEA098 /* FridgeView.swift in Sources */,
 				7C86724429E490C6000C492F /* FridgeViewModel.swift in Sources */,
 				7C549DA629DC796000DEEC91 /* Recipe.swift in Sources */,
+				F2DCE4DE2A016E6B00841739 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

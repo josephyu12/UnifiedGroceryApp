@@ -81,7 +81,7 @@ class ViewModel: ObservableObject {
                         // get all docs and create todos
                         self.list = snapshot.documents.map { d in
                             
-                            print(d["title"] as? String ?? "")
+//                            print(d["title"] as? String ?? "")
                             
                             return Recipe(id: d.documentID,
                                         title: d["title"] as? String ?? "",

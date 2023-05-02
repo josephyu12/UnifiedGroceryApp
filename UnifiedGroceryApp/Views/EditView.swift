@@ -75,7 +75,7 @@ struct EditView: View {
                         print(ingredient)
                         print(category)
                         
-                        fridgemodel.addData(ingredient: ingredient, category: category, amount: Float(amount) ?? 0, amount_unit: amount_unit,
+                        fridgemodel.addData(ingredient: ingredient, category: category, amount: amount, amount_unit: amount_unit,
                             expiration: expiration)
                         
                         ingredient = ""

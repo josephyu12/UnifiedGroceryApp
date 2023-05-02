@@ -1,22 +1,9 @@
-//
 //  ContentView.swift
 //  UnifiedGroceryApp
 //
 //  Created by Joseph Yu on 1/27/23.
 //
-
 import SwiftUI
-
-extension Float {
-    var clean: String {
-
-        if (self.truncatingRemainder(dividingBy: 1) == 0) {
-            return String(format: "%.0f", self)
-        } else {
-            return String(format: "%.1f", self)
-        }
-    }
-}
 
 struct FridgeView: View {
     
@@ -43,35 +30,34 @@ struct FridgeView: View {
                         Section(category) {
                             ForEach(subIngredients) { item in
                                 
+                                
                                 HStack {
                                     VStack(alignment: .leading) {
                                         // title
-                                        
+
                                         Text(item.ingredient).font(.title2)
-                                        
+
                                         // below info
-                                        
+
                                         HStack {
+
+                                            Text(item.amount)
+
+                                            Text(item.amount_unit)
                                             
-//                                            Text(item.amount.clean)
-//                                            Text(String(format: "%.0f", item.amount))
-//                                            if (item.amount_unit == nil || item.amount_unit == "") {
-//                                            } else {
-//                                                Text(item.amount_unit)
-//                                            }
                                         }
-                                        
+
                                     }
-                                    
+
                                     Spacer()
-                                    
+
                                     Button(action: {
                                         fridgemodel.updateData(ingredientToUpdate: item)
                                     }, label: {
                                         Image(systemName: "pencil")
                                     })
                                     .buttonStyle(BorderlessButtonStyle())
-                                    
+
                                     Button(action: {
                                         fridgemodel.deleteData(ingredientToDelete: item)
                                     }, label: {
@@ -82,6 +68,7 @@ struct FridgeView: View {
                                 
                             }
                         }
+        
                     }
                     
                 }

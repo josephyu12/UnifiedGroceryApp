@@ -18,34 +18,38 @@ struct RecipeView: View {
     
     var body: some View {
         
-        ZStack (alignment: .top) {
+        NavigationView {
             
-            Color("redcolor").ignoresSafeArea()
-            
-            Color("bluecolor").edgesIgnoringSafeArea(.top)
-            
-            ScrollView(showsIndicators: false) {
+            ZStack (alignment: .top) {
                 
-                VStack {
+                Color("redcolor").ignoresSafeArea()
+                
+                Color("bluecolor").edgesIgnoringSafeArea(.top)
+                
+                ScrollView(showsIndicators: false) {
                     
-                    Text("Recipes").font(.largeTitle).padding(.top)
-                    Spacer()
-                    ForEach(model.list) { item in
+                    VStack {
                         
-                        GroupBox(label: Label(item.title, systemImage: "fork.knife").foregroundColor(.black)) {
+                        Text("Recipes").font(.largeTitle).padding(.top)
+                        Spacer()
+                        
+                        ForEach(model.list) { item in
+                            
+                            
+                            NavigationLink(destination: RecipeObjectView(title: item.title, category: item.category, directions: item.directions)) {
+                                GroupBox(label: Label(item.title, systemImage: "fork.knife").foregroundColor(.black)) {
+                                }
+                                .groupBoxStyle(TransparentGroupBox())
+                                .padding(.horizontal)
+                            }
+                            
+                            
                         }
-                        .groupBoxStyle(TransparentGroupBox())
-                        .padding(.horizontal)
-                        
-                        
-                        
                         
                         
                     }
                     
-                    
                 }
-                
             }
             
         }

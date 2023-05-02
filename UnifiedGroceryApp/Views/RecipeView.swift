@@ -36,7 +36,7 @@ struct RecipeView: View {
                         ForEach(model.list) { item in
                             
                             
-                            NavigationLink(destination: RecipeObjectView()) {
+                            NavigationLink(destination: RecipeObjectView(title: item.title, category: item.category, directions: item.directions)) {
                                 GroupBox(label: Label(item.title, systemImage: "fork.knife").foregroundColor(.black)) {
                                 }
                                 .groupBoxStyle(TransparentGroupBox())

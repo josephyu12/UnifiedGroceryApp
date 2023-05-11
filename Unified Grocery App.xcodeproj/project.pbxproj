@@ -128,8 +128,6 @@
 		7CE54C7E2984179F00676743 = {
 			isa = PBXGroup;
 			children = (
-				F2DCE4DB2A016E5700841739 /* AddView.swift */,
-				F2DCE4DD2A016E6B00841739 /* SettingsView.swift */,
 				7CE54C892984179F00676743 /* UnifiedGroceryApp */,
 				7CE54C9A298417A000676743 /* UnifiedGroceryAppTests */,
 				7CE54CA4298417A000676743 /* UnifiedGroceryAppUITests */,
@@ -209,6 +207,8 @@
 		F2381C7029C8DF7000BEA098 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F2DCE4DB2A016E5700841739 /* AddView.swift */,
+				F2DCE4DD2A016E6B00841739 /* SettingsView.swift */,
 				F2381C6E29C8D6E900BEA098 /* RecipeView.swift */,
 				F2D1866529DDF731004B1292 /* RecipeObjectView.swift */,
 				F2381C7129C8DF9700BEA098 /* HomeView.swift */,

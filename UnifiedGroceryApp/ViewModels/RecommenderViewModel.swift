@@ -271,7 +271,7 @@ class RecommenderViewModel: ObservableObject {
                 let amount_unit = data["amount_unit"] as? String ?? ""
                 let expiration = data["expiration"] as? Date ?? Date()
                 
-                let ingredient_return = Ingredient(id: id, ingredient: ingredient, category: category, amount: amount, amount_unit: amount_unit)
+                let ingredient_return = Ingredient(id: id, ingredient: ingredient, category: category, amount: amount, amount_unit: amount_unit, expiration: expiration)
                 return ingredient_return
             }
             dispatchGroup.leave()

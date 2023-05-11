@@ -65,8 +65,10 @@ struct RecipeObjectView: View {
                         
                         GroupBox(label: Label(title, systemImage: "fork.knife").foregroundColor(.black).font(.largeTitle)) {
                             Text(category)
+                                .foregroundColor(Color.black)
                             Spacer()
                             Text(directions)
+                                .foregroundColor(Color.black)
                         }
                         .groupBoxStyle(TransparentGroupBox())
                         .padding(.horizontal)

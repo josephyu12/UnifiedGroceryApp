@@ -31,15 +31,27 @@ struct FridgeView: View {
                             
                         } else {
                             
-                            Section(header: Text(category).font(.title).padding(.top)) {
+                            Section(header: Text(category).font(.title).foregroundColor(Color.black).padding(.top)) {
                                 ForEach(subIngredients) { item in
                                             GroupBox(label: Label(item.ingredient, systemImage: "fork.knife").foregroundColor(.black)) {
                                                 
                                                 HStack {
                                                     
                                                     Text(item.amount)
-                                                    
+                                                        .foregroundColor(Color.black)
+                                                    Text("|")
+                                                        .foregroundColor(Color.black)
                                                     Text(item.amount_unit)
+                                                        .foregroundColor(Color.black)
+                                                    Text("|")
+                                                        .foregroundColor(Color.black)
+                                                    HStack {
+                                                        Text("Expiration Date:")
+                                                            .foregroundColor(Color.black)
+                                                        Text(item.expiration, style: .date)
+                                                            .foregroundColor(Color.black)
+                                                        
+                                                    }
                                                     
                                                     Spacer()
                                                     

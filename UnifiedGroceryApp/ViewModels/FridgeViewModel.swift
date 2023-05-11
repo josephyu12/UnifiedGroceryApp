@@ -19,7 +19,7 @@ class FridgeViewModel: ObservableObject {
     
     func updateData(ingredientToUpdate: Ingredient, ingredient: String, category: String, amount: String, amount_unit: String, expiration: Date) {
         let db = Firestore.firestore()
-        db.collection("users").document(user).collection("fridge").document(ingredientToUpdate.id).setData(["ingredient": ingredient, "category": category,"amount": amount,"amount_unit": amount_unit,"expiration": Date()], merge: true) { error in
+        db.collection("users").document(user).collection("fridge").document(ingredientToUpdate.id).setData(["ingredient": ingredient, "category": category,"amount": amount,"amount_unit": amount_unit,"expiration": expiration], merge: true) { error in
             
             if error == nil {
                 self.getData()
@@ -86,6 +86,18 @@ class FridgeViewModel: ObservableObject {
                         // get all docs and create todos
                         self.fridge = snapshot.documents.map { d in
                             
+                            var date: Date
+                            
+                            if let firTimestamp = d["expiration"] as? Timestamp {
+                                date = firTimestamp.dateValue()
+                                let secondsSinceEpoch = date.timeIntervalSince1970
+                            } else {
+                                print("firTimestamp is not a FIRTimestamp object")
+                                date = Date()
+                            }
+                            
+                            
+                            
                             print(d["ingredient"] as? String ?? "")
                             
                             return Ingredient(id: d.documentID,
@@ -93,7 +105,7 @@ class FridgeViewModel: ObservableObject {
                                         category: d["category"] as? String ?? "",
                                         amount: d["amount"] as? String ?? "",
                                         amount_unit: d["amount-unit"] as? String ?? "",
-                                        expiration: d["expiration"] as? Date ?? Date()
+                                        expiration: date as? Date ?? Date()
                             )
                         }
                         

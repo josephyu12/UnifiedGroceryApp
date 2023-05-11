@@ -56,7 +56,7 @@ struct EditView: View {
             VStack (spacing: 10) {
                 
                 TextField("Ingredient Name", text: $ingredient) {
-                    self.endEditing() }.textFieldStyle(RoundedBorderTextFieldStyle())
+                    self.endEditing() }.padding(.all, 10).background(Color.gray).cornerRadius(10).foregroundColor(Color.black)
                 
                 
                 Picker("Category", selection: $category) {
@@ -66,13 +66,13 @@ struct EditView: View {
                 }
                 
                 TextField("Amount", text: $amount)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.all, 10).background(Color.gray).cornerRadius(10).foregroundColor(Color.black)
                     .keyboardType(.decimalPad)
                 
                 TextField("Amount Unit", text: $amount_unit)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.all, 10).background(Color.gray).cornerRadius(10).foregroundColor(Color.black)
                 
-                DatePicker("Expiration Date", selection: $expiration, in: Date()..., displayedComponents: .date)
+                DatePicker("Expiration Date", selection: $expiration, in: Date()..., displayedComponents: .date).foregroundColor(Color.black)
                 
                 Button(action: {
                     
@@ -89,7 +89,7 @@ struct EditView: View {
                     expiration = Date()
                     
                 }, label: {
-                    Text("Add Ingredient to Fridge")
+                    Text("Add Ingredient to Fridge").foregroundColor(Color.black)
                 }).disabled(ingredient.isEmpty || category == "")
                 
             }

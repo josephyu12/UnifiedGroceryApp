@@ -14,6 +14,6 @@ struct Ingredient: Identifiable {
     var category: String
     var amount: String
     var amount_unit: String
-    var expiration: Date?
+    var expiration: Date
     
 }

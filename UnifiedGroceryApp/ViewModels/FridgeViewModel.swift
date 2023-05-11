@@ -17,9 +17,9 @@ class FridgeViewModel: ObservableObject {
     
     var user = "travtran"
     
-    func updateData(ingredientToUpdate: Ingredient) {
+    func updateData(ingredientToUpdate: Ingredient, ingredient: String, category: String, amount: String, amount_unit: String, expiration: Date) {
         let db = Firestore.firestore()
-        db.collection("users").document(user).collection("fridge").document(ingredientToUpdate.id).setData(["ingredient": "Updated: \(ingredientToUpdate.ingredient)"], merge: true) { error in
+        db.collection("users").document(user).collection("fridge").document(ingredientToUpdate.id).setData(["ingredient": ingredient, "category": category,"amount": amount,"amount_unit": amount_unit,"expiration": Date()], merge: true) { error in
             
             if error == nil {
                 self.getData()
@@ -93,7 +93,7 @@ class FridgeViewModel: ObservableObject {
                                         category: d["category"] as? String ?? "",
                                         amount: d["amount"] as? String ?? "",
                                         amount_unit: d["amount-unit"] as? String ?? "",
-                                        expiration: d["expiration"] as? Date
+                                        expiration: d["expiration"] as? Date ?? Date()
                             )
                         }
                         

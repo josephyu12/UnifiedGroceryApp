@@ -7,14 +7,7 @@
 import SwiftUI
 struct RecipeView: View {
     
-    @ObservedObject var model = ViewModel()
-    
-    
-    let rows = 2
-    let columns = 5
-    
-    let numbers = Array(1...10)
-    
+    @ObservedObject var model = ViewModel()    
     
     var body: some View {
         
@@ -30,7 +23,7 @@ struct RecipeView: View {
                     
                     VStack {
                         
-                        Text("Recipes").font(.largeTitle).padding(.top)
+                        Text("Recipes").font(.largeTitle).foregroundColor(Color.black).padding(.top)
                         Spacer()
                         
                         ForEach(model.list) { item in
@@ -48,7 +41,7 @@ struct RecipeView: View {
                         
                         
                     }
-                    
+                    Spacer()
                 }
             }
             

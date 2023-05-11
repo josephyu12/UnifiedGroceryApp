@@ -39,6 +39,8 @@
 		F2381C7429C8DFA000BEA098 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2381C7329C8DFA000BEA098 /* EditView.swift */; };
 		F2381C7629C8DFB100BEA098 /* FridgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2381C7529C8DFB100BEA098 /* FridgeView.swift */; };
 		F2D1866629DDF731004B1292 /* RecipeObjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2D1866529DDF731004B1292 /* RecipeObjectView.swift */; };
+		F2DCE4DC2A016E5700841739 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DCE4DB2A016E5700841739 /* AddView.swift */; };
+		F2DCE4DE2A016E6B00841739 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DCE4DD2A016E6B00841739 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,14 +65,14 @@
 		7C549DA529DC796000DEEC91 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		7C72D20D29D4AFA700E4A2CC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7C86724329E490C6000C492F /* FridgeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FridgeViewModel.swift; sourceTree = "<group>"; };
-		7CE54C872984179F00676743 /* UnifiedGroceryApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UnifiedGroceryApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CE54C872984179F00676743 /* Unified Grocery App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Unified Grocery App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CE54C8A2984179F00676743 /* UnifiedGroceryAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedGroceryAppApp.swift; sourceTree = "<group>"; };
 		7CE54C8C2984179F00676743 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		7CE54C8E298417A000676743 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7CE54C8E298417A000676743 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = UnifiedGroceryApp/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		7CE54C91298417A000676743 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		7CE54C97298417A000676743 /* UnifiedGroceryAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnifiedGroceryAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CE54C97298417A000676743 /* Unified Grocery AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unified Grocery AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CE54C9B298417A000676743 /* UnifiedGroceryAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedGroceryAppTests.swift; sourceTree = "<group>"; };
-		7CE54CA1298417A000676743 /* UnifiedGroceryAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnifiedGroceryAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CE54CA1298417A000676743 /* Unified Grocery AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Unified Grocery AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CE54CA5298417A000676743 /* UnifiedGroceryAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedGroceryAppUITests.swift; sourceTree = "<group>"; };
 		7CE54CA7298417A000676743 /* UnifiedGroceryAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnifiedGroceryAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7CED8D9D29DB55B70051A263 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -80,6 +82,8 @@
 		F2381C7329C8DFA000BEA098 /* EditView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
 		F2381C7529C8DFB100BEA098 /* FridgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FridgeView.swift; sourceTree = "<group>"; };
 		F2D1866529DDF731004B1292 /* RecipeObjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeObjectView.swift; sourceTree = "<group>"; };
+		F2DCE4DB2A016E5700841739 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		F2DCE4DD2A016E6B00841739 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +128,8 @@
 		7CE54C7E2984179F00676743 = {
 			isa = PBXGroup;
 			children = (
+				F2DCE4DB2A016E5700841739 /* AddView.swift */,
+				F2DCE4DD2A016E6B00841739 /* SettingsView.swift */,
 				7CE54C892984179F00676743 /* UnifiedGroceryApp */,
 				7CE54C9A298417A000676743 /* UnifiedGroceryAppTests */,
 				7CE54CA4298417A000676743 /* UnifiedGroceryAppUITests */,
@@ -134,9 +140,9 @@
 		7CE54C882984179F00676743 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7CE54C872984179F00676743 /* UnifiedGroceryApp.app */,
-				7CE54C97298417A000676743 /* UnifiedGroceryAppTests.xctest */,
-				7CE54CA1298417A000676743 /* UnifiedGroceryAppUITests.xctest */,
+				7CE54C872984179F00676743 /* Unified Grocery App.app */,
+				7CE54C97298417A000676743 /* Unified Grocery AppTests.xctest */,
+				7CE54CA1298417A000676743 /* Unified Grocery AppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -215,9 +221,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7CE54C862984179F00676743 /* UnifiedGroceryApp */ = {
+		7CE54C862984179F00676743 /* Unified Grocery App */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7CE54CAB298417A000676743 /* Build configuration list for PBXNativeTarget "UnifiedGroceryApp" */;
+			buildConfigurationList = 7CE54CAB298417A000676743 /* Build configuration list for PBXNativeTarget "Unified Grocery App" */;
 			buildPhases = (
 				7CE54C832984179F00676743 /* Sources */,
 				7CE54C842984179F00676743 /* Frameworks */,
@@ -227,7 +233,7 @@
 			);
 			dependencies = (
 			);
-			name = UnifiedGroceryApp;
+			name = "Unified Grocery App";
 			packageProductDependencies = (
 				7C72D21029D4AFD800E4A2CC /* FirebaseAnalytics */,
 				7C72D21229D4AFD800E4A2CC /* FirebaseAnalyticsOnDeviceConversion */,
@@ -245,12 +251,12 @@
 				7C72D22A29D4AFD800E4A2CC /* FirebaseStorageCombine-Community */,
 			);
 			productName = UnifiedGroceryApp;
-			productReference = 7CE54C872984179F00676743 /* UnifiedGroceryApp.app */;
+			productReference = 7CE54C872984179F00676743 /* Unified Grocery App.app */;
 			productType = "com.apple.product-type.application";
 		};
-		7CE54C96298417A000676743 /* UnifiedGroceryAppTests */ = {
+		7CE54C96298417A000676743 /* Unified Grocery AppTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7CE54CAE298417A000676743 /* Build configuration list for PBXNativeTarget "UnifiedGroceryAppTests" */;
+			buildConfigurationList = 7CE54CAE298417A000676743 /* Build configuration list for PBXNativeTarget "Unified Grocery AppTests" */;
 			buildPhases = (
 				7CE54C93298417A000676743 /* Sources */,
 				7CE54C94298417A000676743 /* Frameworks */,
@@ -261,14 +267,14 @@
 			dependencies = (
 				7CE54C99298417A000676743 /* PBXTargetDependency */,
 			);
-			name = UnifiedGroceryAppTests;
+			name = "Unified Grocery AppTests";
 			productName = UnifiedGroceryAppTests;
-			productReference = 7CE54C97298417A000676743 /* UnifiedGroceryAppTests.xctest */;
+			productReference = 7CE54C97298417A000676743 /* Unified Grocery AppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		7CE54CA0298417A000676743 /* UnifiedGroceryAppUITests */ = {
+		7CE54CA0298417A000676743 /* Unified Grocery AppUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7CE54CB1298417A000676743 /* Build configuration list for PBXNativeTarget "UnifiedGroceryAppUITests" */;
+			buildConfigurationList = 7CE54CB1298417A000676743 /* Build configuration list for PBXNativeTarget "Unified Grocery AppUITests" */;
 			buildPhases = (
 				7CE54C9D298417A000676743 /* Sources */,
 				7CE54C9E298417A000676743 /* Frameworks */,
@@ -279,9 +285,9 @@
 			dependencies = (
 				7CE54CA3298417A000676743 /* PBXTargetDependency */,
 			);
-			name = UnifiedGroceryAppUITests;
+			name = "Unified Grocery AppUITests";
 			productName = UnifiedGroceryAppUITests;
-			productReference = 7CE54CA1298417A000676743 /* UnifiedGroceryAppUITests.xctest */;
+			productReference = 7CE54CA1298417A000676743 /* Unified Grocery AppUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -310,7 +316,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 7CE54C822984179F00676743 /* Build configuration list for PBXProject "UnifiedGroceryApp" */;
+			buildConfigurationList = 7CE54C822984179F00676743 /* Build configuration list for PBXProject "Unified Grocery App" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -326,9 +332,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7CE54C862984179F00676743 /* UnifiedGroceryApp */,
-				7CE54C96298417A000676743 /* UnifiedGroceryAppTests */,
-				7CE54CA0298417A000676743 /* UnifiedGroceryAppUITests */,
+				7CE54C862984179F00676743 /* Unified Grocery App */,
+				7CE54C96298417A000676743 /* Unified Grocery AppTests */,
+				7CE54CA0298417A000676743 /* Unified Grocery AppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -374,9 +380,11 @@
 				7C05ADA22A016D490093F3AC /* RecommenderViewModel.swift in Sources */,
 				7CE54C8D2984179F00676743 /* ContentView.swift in Sources */,
 				7CE54C8B2984179F00676743 /* UnifiedGroceryAppApp.swift in Sources */,
+				F2DCE4DC2A016E5700841739 /* AddView.swift in Sources */,
 				F2381C7629C8DFB100BEA098 /* FridgeView.swift in Sources */,
 				7C86724429E490C6000C492F /* FridgeViewModel.swift in Sources */,
 				7C549DA629DC796000DEEC91 /* Recipe.swift in Sources */,
+				F2DCE4DE2A016E6B00841739 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,12 +410,12 @@
 /* Begin PBXTargetDependency section */
 		7CE54C99298417A000676743 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7CE54C862984179F00676743 /* UnifiedGroceryApp */;
+			target = 7CE54C862984179F00676743 /* Unified Grocery App */;
 			targetProxy = 7CE54C98298417A000676743 /* PBXContainerItemProxy */;
 		};
 		7CE54CA3298417A000676743 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 7CE54C862984179F00676743 /* UnifiedGroceryApp */;
+			target = 7CE54C862984179F00676743 /* Unified Grocery App */;
 			targetProxy = 7CE54CA2298417A000676743 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -532,7 +540,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -540,6 +548,7 @@
 				DEVELOPMENT_TEAM = 6JVL9XXT7F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Unified Grocery App";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -568,7 +577,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -576,6 +585,7 @@
 				DEVELOPMENT_TEAM = 6JVL9XXT7F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Unified Grocery App";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -614,7 +624,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UnifiedGroceryApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/UnifiedGroceryApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Unified Grocery App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Unified Grocery App";
 			};
 			name = Debug;
 		};
@@ -633,7 +643,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UnifiedGroceryApp.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/UnifiedGroceryApp";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Unified Grocery App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Unified Grocery App";
 			};
 			name = Release;
 		};
@@ -674,7 +684,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7CE54C822984179F00676743 /* Build configuration list for PBXProject "UnifiedGroceryApp" */ = {
+		7CE54C822984179F00676743 /* Build configuration list for PBXProject "Unified Grocery App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7CE54CA9298417A000676743 /* Debug */,
@@ -683,7 +693,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7CE54CAB298417A000676743 /* Build configuration list for PBXNativeTarget "UnifiedGroceryApp" */ = {
+		7CE54CAB298417A000676743 /* Build configuration list for PBXNativeTarget "Unified Grocery App" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7CE54CAC298417A000676743 /* Debug */,
@@ -692,7 +702,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7CE54CAE298417A000676743 /* Build configuration list for PBXNativeTarget "UnifiedGroceryAppTests" */ = {
+		7CE54CAE298417A000676743 /* Build configuration list for PBXNativeTarget "Unified Grocery AppTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7CE54CAF298417A000676743 /* Debug */,
@@ -701,7 +711,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		7CE54CB1298417A000676743 /* Build configuration list for PBXNativeTarget "UnifiedGroceryAppUITests" */ = {
+		7CE54CB1298417A000676743 /* Build configuration list for PBXNativeTarget "Unified Grocery AppUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7CE54CB2298417A000676743 /* Debug */,

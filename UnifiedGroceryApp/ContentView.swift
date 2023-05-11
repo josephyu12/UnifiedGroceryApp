@@ -27,20 +27,20 @@ struct ContentView: View {
                 Color("redcolor").ignoresSafeArea()
                 HStack {
                     
-                    Text("[Insert Title Here]").foregroundColor(Color.black)
+                    Text("Unified Grocery App").foregroundColor(Color.black)
                         .padding(.leading).font(.system(size:24))
-                    
-                    
+
                     Spacer()
-                    
-                    Button(action: {
-                        print("this is the action run")
-                    }) {
-                        Image(systemName: "gear").foregroundColor(Color.black)
-                            .padding(.trailing).font(.system(size:24))
-                    }
-                    
-                    
+//                    NavigationView {
+//
+//                        NavigationLink(destination: SettingsView()) {
+//                            Color("redcolor").ignoresSafeArea()
+//                            Image(systemName: "gear").foregroundColor(Color.black)
+//                                .padding(.trailing).font(.system(size:24))
+//
+//                        }.background(Color("redcolor").ignoresSafeArea())
+//
+//                    }
                 }
             }
             .padding(0.0)

@@ -20,11 +20,11 @@ extension UIApplication {
 
 struct Background<Content: View>: View {
     private var content: Content
-
+    
     init(@ViewBuilder content: @escaping () -> Content) {
         self.content = content()
     }
- 
+    
     var body: some View {
         Color("bluecolor").edgesIgnoringSafeArea(.all)
             .overlay(content)
@@ -45,52 +45,56 @@ struct EditView: View {
     
     var body: some View {
         
-//        ZStack (alignment: .top) {
+        //        ZStack (alignment: .top) {
         
         Background {
             
-                VStack (spacing: 10) {
-                    
-                    TextField("Ingredient Name", text: $ingredient) {
-                        self.endEditing() }.textFieldStyle(RoundedBorderTextFieldStyle())
-                    
-                    
-                    Picker("Category", selection: $category) {
-                        ForEach(categories, id: \.self) {
-                            Text($0)
-                        }
-                    }
-                    
-                    TextField("Amount", text: $amount)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .keyboardType(.decimalPad)
-                    
-                    TextField("Amount Unit", text: $amount_unit)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                    
-                    DatePicker("Expiration Date", selection: $expiration, in: Date()..., displayedComponents: .date)
-                    
-                    Button(action: {
-                        
-                        print(ingredient)
-                        print(category)
-                        
-                        fridgemodel.addData(ingredient: ingredient, category: category, amount: amount, amount_unit: amount_unit,
-                            expiration: expiration)
-                        
-                        ingredient = ""
-                        category = ""
-                        amount = ""
-                        amount_unit = ""
-                        expiration = Date()
-                        
-                    }, label: {
-                        Text("Add Ingredient to Fridge")
-                    }).disabled(ingredient.isEmpty || category == "")
-                    
-                }
-                .padding()
+            Color("redcolor").ignoresSafeArea()
+            
+            Color("bluecolor").edgesIgnoringSafeArea(.top)
+            
+            VStack (spacing: 10) {
                 
+                TextField("Ingredient Name", text: $ingredient) {
+                    self.endEditing() }.padding(.all, 10).background(Color.gray).cornerRadius(10).foregroundColor(Color.black)
+                
+                
+                Picker("Category", selection: $category) {
+                    ForEach(categories, id: \.self) {
+                        Text($0)
+                    }
+                }
+                
+                TextField("Amount", text: $amount)
+                    .padding(.all, 10).background(Color.gray).cornerRadius(10).foregroundColor(Color.black)
+                    .keyboardType(.decimalPad)
+                
+                TextField("Amount Unit", text: $amount_unit)
+                    .padding(.all, 10).background(Color.gray).cornerRadius(10).foregroundColor(Color.black)
+                
+                DatePicker("Expiration Date", selection: $expiration, in: Date()..., displayedComponents: .date).foregroundColor(Color.black)
+                
+                Button(action: {
+                    
+                    print(ingredient)
+                    print(category)
+                    
+                    fridgemodel.addData(ingredient: ingredient, category: category, amount: amount, amount_unit: amount_unit,
+                                        expiration: expiration)
+                    
+                    ingredient = ""
+                    category = ""
+                    amount = ""
+                    amount_unit = ""
+                    expiration = Date()
+                    
+                }, label: {
+                    Text("Add Ingredient to Fridge").foregroundColor(Color.black)
+                }).disabled(ingredient.isEmpty || category == "")
+                
+            }
+            .padding()
+            
             
         }.onTapGesture {
             self.endEditing()
@@ -98,10 +102,10 @@ struct EditView: View {
     }
     
     private func endEditing() {
-            UIApplication.shared.endEditing()
-        }
-        
+        UIApplication.shared.endEditing()
     }
+    
+}
 
 
 struct EditView_Previews: PreviewProvider {

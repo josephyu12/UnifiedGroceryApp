@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C05ADA22A016D490093F3AC /* RecommenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C05ADA12A016D490093F3AC /* RecommenderViewModel.swift */; };
 		7C549DA629DC796000DEEC91 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C549DA529DC796000DEEC91 /* Recipe.swift */; };
 		7C72D20E29D4AFA700E4A2CC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7C72D20D29D4AFA700E4A2CC /* GoogleService-Info.plist */; };
 		7C72D21129D4AFD800E4A2CC /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7C72D21029D4AFD800E4A2CC /* FirebaseAnalytics */; };
@@ -58,6 +59,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C05ADA12A016D490093F3AC /* RecommenderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecommenderViewModel.swift; sourceTree = "<group>"; };
 		7C549DA529DC796000DEEC91 /* Recipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		7C72D20D29D4AFA700E4A2CC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		7C86724329E490C6000C492F /* FridgeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FridgeViewModel.swift; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 			children = (
 				7CED8D9D29DB55B70051A263 /* ViewModel.swift */,
 				7C86724329E490C6000C492F /* FridgeViewModel.swift */,
+				7C05ADA12A016D490093F3AC /* RecommenderViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				F2381C7229C8DF9700BEA098 /* HomeView.swift in Sources */,
 				F2381C7429C8DFA000BEA098 /* EditView.swift in Sources */,
 				F2D1866629DDF731004B1292 /* RecipeObjectView.swift in Sources */,
+				7C05ADA22A016D490093F3AC /* RecommenderViewModel.swift in Sources */,
 				7CE54C8D2984179F00676743 /* ContentView.swift in Sources */,
 				7CE54C8B2984179F00676743 /* UnifiedGroceryAppApp.swift in Sources */,
 				F2381C7629C8DFB100BEA098 /* FridgeView.swift in Sources */,

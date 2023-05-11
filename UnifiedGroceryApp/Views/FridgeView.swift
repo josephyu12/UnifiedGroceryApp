@@ -13,7 +13,8 @@ struct FridgeView: View {
     
     var body: some View {
 
-        ZStack {
+        ZStack (alignment: .top) {
+                Color("redcolor").ignoresSafeArea()
             
             Color("bluecolor").edgesIgnoringSafeArea(.all)
             

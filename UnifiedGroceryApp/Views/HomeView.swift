@@ -27,12 +27,16 @@ struct TransparentGroupBox: GroupBoxStyle {
 }
 struct HomeView: View {
     
+//    @ObservedObject var breakfast = RecommenderViewModel()
+    
     let timeZone = Int(TimeZone.current.secondsFromGMT())
     let currentDateTime = Date()
     let data = (1...100).map { "Item \($0)" }
     let columns = [
         GridItem(.flexible())
     ]
+    
+    @ObservedObject var recommender = RecommenderViewModel()
     
     var body: some View {
         
@@ -54,6 +58,32 @@ struct HomeView: View {
                     } else {
                         Text("Good Evening").font(.largeTitle).padding(.top)
                     }
+                    
+                    ///////
+                    ///
+                    
+                    if (recommender.recommendedRecipes.isEmpty) {
+                        Text("No Suitable Recipes, Please Add More Ingredients to Your Fridge!")
+                    }
+                    
+                    else {
+                        
+
+                    
+                    ForEach(recommender.recommendedRecipes) { item in
+                        
+                        
+                        NavigationLink(destination: RecipeObjectView(title: item.title, category: item.category, directions: item.directions)) {
+                            GroupBox(label: Label(item.title, systemImage: "fork.knife").foregroundColor(.black)) {
+                            }
+                            .groupBoxStyle(TransparentGroupBox())
+                            .padding(.horizontal)
+                        }
+                        
+                        }
+                    }
+                    
+                    ///////
                     
                     LazyVGrid(columns: columns, spacing: 20) {
                         
@@ -90,6 +120,12 @@ struct HomeView: View {
         }
         
     }
+    
+    init() {
+        recommender.fetchRecipesAndIngredientsFromFirestore()
+//        fridgemodel.getData()
+    }
+    
 }
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {

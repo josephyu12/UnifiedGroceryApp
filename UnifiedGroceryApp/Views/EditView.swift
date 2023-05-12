@@ -12,11 +12,15 @@
 
 import SwiftUI
 
+// function end editing will send the selector to nil
+
 extension UIApplication {
     func endEditing() {
         sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
+
+// make a background structure that allows escaping for the editing view
 
 struct Background<Content: View>: View {
     private var content: Content
@@ -33,7 +37,11 @@ struct Background<Content: View>: View {
 
 struct EditView: View {
     
+    // observe the fridgemodel
+    
     @ObservedObject var fridgemodel = FridgeViewModel()
+    
+    // define blank variables for holding data that will be submitted in the form
     
     @State var ingredient = ""
     @State var category = ""
@@ -41,13 +49,17 @@ struct EditView: View {
     @State var amount_unit = ""
     @State var expiration = Date()
     
+    // define list of food categories
+    
     var categories = ["Select a Category", "Fruits", "Vegetables", "Grains", "Protein", "Dairy", "Condiments", "Other"]
     
     var body: some View {
         
-        //        ZStack (alignment: .top) {
+        // wrap everything in background to enable the editing escape
         
         Background {
+            
+            // main background that is blue with red bit at bottom for navigation bar overlay
             
             Color("redcolor").ignoresSafeArea()
             
@@ -55,9 +67,12 @@ struct EditView: View {
             
             VStack (spacing: 10) {
                 
+                // form field for the ingredient name
+                
                 TextField("Ingredient Name", text: $ingredient) {
                     self.endEditing() }.padding(.all, 10).background(Color.gray).cornerRadius(10).foregroundColor(Color.black)
                 
+                // form field for the category, dropdown based
                 
                 Picker("Category", selection: $category) {
                     ForEach(categories, id: \.self) {
@@ -65,22 +80,34 @@ struct EditView: View {
                     }
                 }
                 
+                // field for amount
+                
                 TextField("Amount", text: $amount)
                     .padding(.all, 10).background(Color.gray).cornerRadius(10).foregroundColor(Color.black)
                     .keyboardType(.decimalPad)
                 
+                // field for amount unit
+                
                 TextField("Amount Unit", text: $amount_unit)
                     .padding(.all, 10).background(Color.gray).cornerRadius(10).foregroundColor(Color.black)
                 
+                // field for expiration date
+                
                 DatePicker("Expiration Date", selection: $expiration, in: Date()..., displayedComponents: .date).foregroundColor(Color.black).padding()
+                
+                // submit button
                 
                 Button(action: {
                     
                     print(ingredient)
                     print(category)
                     
+                    // pass data to the viewmodel which will submit to firebase
+                    
                     fridgemodel.addData(ingredient: ingredient, category: category, amount: amount, amount_unit: amount_unit,
                                         expiration: expiration)
+                    
+                    // reset the form fields
                     
                     ingredient = ""
                     category = ""
@@ -89,7 +116,11 @@ struct EditView: View {
                     expiration = Date()
                     
                 }, label: {
+                    
+                    // label for submit button
                     Text("Add Ingredient to Fridge")
+                    
+                    // disable submission if ingredient is blank or category blank
                 }).disabled(ingredient.isEmpty || category == "").padding()
                     .background(Color("graycolor"))
                     .foregroundColor(.black)
@@ -98,11 +129,14 @@ struct EditView: View {
             }
             .padding()
             
+            // if tap elsewhere, end the editing view
             
         }.onTapGesture {
             self.endEditing()
         }
     }
+    
+    // function to end editing
     
     private func endEditing() {
         UIApplication.shared.endEditing()

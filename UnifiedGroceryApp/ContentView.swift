@@ -7,13 +7,19 @@
 
 import SwiftUI
 
+// variables based on screen size for formatting
+
 extension UIScreen{
     static let screenWidth = UIScreen.main.bounds.size.width
     static let screenHeight = UIScreen.main.bounds.size.height
     static let screenSize = UIScreen.main.bounds.size
 }
 
+
+
 struct ContentView: View {
+    
+    // initialize, make the Tab navigation bar appear red with white text
     
     init() {
         UITabBar.appearance().unselectedItemTintColor = UIColor.white
@@ -22,7 +28,12 @@ struct ContentView: View {
     
     var body: some View {
         
+        // vertical stack of heading and main body
+        
         VStack(spacing: 0) {
+            
+            // red header with app name text, takes up the top section only
+            
             ZStack{
                 Color("redcolor").ignoresSafeArea()
                 HStack {
@@ -31,39 +42,40 @@ struct ContentView: View {
                         .padding(.leading).font(.system(size:24))
 
                     Spacer()
-//                    NavigationView {
-//
-//                        NavigationLink(destination: SettingsView()) {
-//                            Color("redcolor").ignoresSafeArea()
-//                            Image(systemName: "gear").foregroundColor(Color.black)
-//                                .padding(.trailing).font(.system(size:24))
-//
-//                        }.background(Color("redcolor").ignoresSafeArea())
-//
-//                    }
+
                 }
             }
             .padding(0.0)
             .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight/20)
             
+            // main body, a TabView that allows access between different pages
+            
             TabView {
                 Group {
+                    
+                    // link to home page
                     HomeView()
                         .padding(0.0)
                         .tabItem() {
                             Image(systemName: "house")
                             Text("Home")
                         }
+                    
+                    // link to all recipes page
                     RecipeView()
                         .tabItem() {
                             Image(systemName: "list.clipboard")
                             Text("Recipes")
                         }
+                    
+                    // link to fridge page with ingredients
                     FridgeView()
                         .tabItem() {
                             Image(systemName: "takeoutbag.and.cup.and.straw.fill")
                             Text("Fridge")
                         }
+                    
+                    // link to edit page to add ingredients
                     EditView()
                         .tabItem() {
                             Image(systemName: "plus")
@@ -72,9 +84,6 @@ struct ContentView: View {
                         }
                 }
                 
-//                .toolbar(.visible, for: .tabBar)
-//                .toolbarBackground(Color("redcolor"), for: .tabBar)
-//                .toolbarColorScheme(.light, for: .tabBar)
             }
         }
     }

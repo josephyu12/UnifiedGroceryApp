@@ -68,7 +68,7 @@ struct HomeView: View {
                     ///
                     
                     if (recommender.recommendedRecipes.isEmpty) {
-                        Text("No Suitable Recipes, Please Add More Ingredients to Your Fridge!")
+                        
                     }
                     
                     else {
@@ -105,69 +105,69 @@ struct HomeView: View {
                                 .groupBoxStyle(TransparentGroupBox())
                                 .padding(.horizontal)
                                 
+                                
+                                //                            Section(header: Text(category).font(.title).foregroundColor(Color.black).padding(.top)) {
+                                
+                                //                                ForEach(subRecipes) { item in
+                                //
+                                //
+                                //                                    NavigationLink(destination: RecipeObjectView(title: item.title, category: item.category, directions: item.directions)) {
+                                //                                        GroupBox(label: Label(item.title, systemImage: "fork.knife").foregroundColor(.black)) {
+                                //                                        }
+                                //                                        .groupBoxStyle(TransparentGroupBox())
+                                //                                        .padding(.horizontal)
+                                //
+                                //                                    }
+                                //
+                                //                                }
+                                
+                                //                            }
                             }
-                            
-//                            Section(header: Text(category).font(.title).foregroundColor(Color.black).padding(.top)) {
-                                
-//                                ForEach(subRecipes) { item in
-//
-//
-//                                    NavigationLink(destination: RecipeObjectView(title: item.title, category: item.category, directions: item.directions)) {
-//                                        GroupBox(label: Label(item.title, systemImage: "fork.knife").foregroundColor(.black)) {
-//                                        }
-//                                        .groupBoxStyle(TransparentGroupBox())
-//                                        .padding(.horizontal)
-//
-//                                    }
-//
-//                                }
-                                
-//                            }
                         }
-                    }
-                    
-                    LazyVGrid(columns: columns, spacing: 20) {
                         
-                        GroupBox(label: HStack {
-                            Spacer()
-                            Label("Expiring Ingredients", systemImage: "exclamationmark.triangle").padding(.top).foregroundColor(.black).font(.title)
-                            Spacer()
+                        LazyVGrid(columns: columns, spacing: 20) {
+                            
+                            GroupBox(label: HStack {
+                                Spacer()
+                                Label("Expiring Ingredients", systemImage: "exclamationmark.triangle").padding(.top).foregroundColor(.black).font(.title)
+                                Spacer()
                             }
                             ) {
-                            
-                            ForEach(recommender.expiringIngredients) { item in
-                                GroupBox(label: Label(item.ingredient, systemImage: "fork.knife").foregroundColor(.black)) {
-                                    
-                                                                      
+                                
+                                ForEach(recommender.expiringIngredients) { item in
+                                    GroupBox(label: Label(item.ingredient, systemImage: "fork.knife").foregroundColor(.black)) {
+                                        
+                                        
                                         HStack {
                                             Text("Expiration Date:")
                                                 .foregroundColor(Color.black)
                                             Text(item.expiration, style: .date)
                                                 .foregroundColor(Color.black)
-
+                                            
                                         }
                                         .padding(.top, -5.0)
-                                    
-                                    
-                                    
+                                        
+                                        
+                                        
+                                    }
+                                    .groupBoxStyle(TransparentGroupBox())
+                                    .padding(.horizontal)
                                 }
-                                .groupBoxStyle(TransparentGroupBox())
-                                .padding(.horizontal)
+                                
                             }
+                            .groupBoxStyle(TransparentGroupBox())
+                            .padding(.horizontal)
+                            
                             
                         }
-                        .groupBoxStyle(TransparentGroupBox())
-                        .padding(.horizontal)
-                        
                         
                     }
                     
-                }
+                    Spacer()
+                    
+                }.refreshable {recommender.fetchRecipesAndIngredientsFromFirestore()}
                 
-                Spacer()
-                
-            }.refreshable {recommender.fetchRecipesAndIngredientsFromFirestore()}
-            
+            }
         }
         
     }

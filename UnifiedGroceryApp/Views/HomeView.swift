@@ -42,123 +42,109 @@ struct HomeView: View {
     
     var body: some View {
         
-        ZStack (alignment: .top) {
+        NavigationView {
             
-            Color("redcolor").ignoresSafeArea()
-            
-            Color("bluecolor").edgesIgnoringSafeArea(.top)
-            
-            ScrollView(showsIndicators: false) {
+            ZStack (alignment: .top) {
                 
-                VStack {
+                Color("redcolor").ignoresSafeArea()
+                
+                Color("bluecolor").edgesIgnoringSafeArea(.top)
+                
+                ScrollView(showsIndicators: false) {
                     
-                    if ((Int(currentDateTime.timeIntervalSince1970)+timeZone)%86400<43200) {
-                        Text("Good Morning")
-                            .font(.largeTitle).foregroundColor(Color.black).padding(.top)
-                    } else if ((Int(currentDateTime.timeIntervalSince1970)+timeZone)%86400<61200) {
-                        Text("Good Afternoon").font(.largeTitle).foregroundColor(Color.black).padding(.top)
-                    } else {
-                        Text("Good Evening").font(.largeTitle).foregroundColor(Color.black).padding(.top)
-                    }
-                    
-                    Text("Your Personalized Recipe Recommendations:").font(.headline).foregroundColor(Color.black).padding(.top, -10.0)
-                    
-                    
-                    ///////
-                    ///
-                    
-                    if (recommender.recommendedRecipes.isEmpty) {
+                    VStack {
                         
-                    }
-                    
-                    else {
+                        if ((Int(currentDateTime.timeIntervalSince1970)+timeZone)%86400<43200) {
+                            Text("Good Morning")
+                                .font(.largeTitle).foregroundColor(Color.black).padding(.top)
+                        } else if ((Int(currentDateTime.timeIntervalSince1970)+timeZone)%86400<61200) {
+                            Text("Good Afternoon").font(.largeTitle).foregroundColor(Color.black).padding(.top)
+                        } else {
+                            Text("Good Evening").font(.largeTitle).foregroundColor(Color.black).padding(.top)
+                        }
                         
-                        ForEach(categories, id:\.self) { category in
+                        Text("Your Personalized Recipe Recommendations:").font(.headline).foregroundColor(Color.black).padding(.top, -10.0)
+                        
+                        
+                        ///////
+                        ///
+                        
+                        if (recommender.recommendedRecipes.isEmpty) {
                             
-                            let subRecipes = recommender.recommendedRecipes.filter {$0.category == category}
+                        }
+                        
+                        else {
                             
-                            if (subRecipes.isEmpty) {
+                            ForEach(categories, id:\.self) { category in
                                 
-                            } else {
+                                let subRecipes = recommender.recommendedRecipes.filter {$0.category == category}
                                 
+                                if (subRecipes.isEmpty) {
+                                    
+                                } else {
+                                    
+                                    
+                                    GroupBox(label: HStack {
+                                        Spacer()
+                                        Label(category, systemImage: "").padding(.bottom, -5.0).padding(.top, 5.0).foregroundColor(.black).font(.largeTitle)
+                                        Spacer()
+                                    }) {
+                                        
+                                        
+                                        ForEach(subRecipes) { item in
+                                            
+                                            NavigationLink(destination: RecipeObjectView(title: item.title, category: item.category, directions: item.directions)) {
+                                                GroupBox(label: Label(item.title, systemImage: "fork.knife").foregroundColor(.black)) {
+                                                }
+                                                .groupBoxStyle(TransparentGroupBox())
+                                                .padding(.horizontal)
+                                                
+                                            }
+                                            
+                                        }
+                                    }
+                                    
+                                    .groupBoxStyle(TransparentGroupBox())
+                                    .padding(.horizontal)
+                                    
+                                }
+                            }
+                            
+                            LazyVGrid(columns: columns, spacing: 20) {
                                 
                                 GroupBox(label: HStack {
                                     Spacer()
-                                    Label(category, systemImage: "").padding(.bottom, -5.0).padding(.top, 5.0).foregroundColor(.black).font(.largeTitle)
+                                    Label("Expiring Ingredients", systemImage: "exclamationmark.triangle").padding(.top).foregroundColor(.black).font(.title)
                                     Spacer()
-                                }) {
+                                }
+                                ) {
                                     
-                                    
-                                    ForEach(subRecipes) { item in
-                                        
-                                        NavigationLink(destination: RecipeObjectView(title: item.title, category: item.category, directions: item.directions)) {
-                                            GroupBox(label: Label(item.title, systemImage: "fork.knife").foregroundColor(.black)) {
+                                    ForEach(recommender.expiringIngredients) { item in
+                                        GroupBox(label: Label(item.ingredient, systemImage: "fork.knife").foregroundColor(.black)) {
+                                            
+                                            
+                                            HStack {
+                                                Text("Expiration Date:")
+                                                    .foregroundColor(Color.black)
+                                                Text(item.expiration, style: .date)
+                                                    .foregroundColor(Color.black)
+                                                
                                             }
-                                            .groupBoxStyle(TransparentGroupBox())
-                                            .padding(.horizontal)
+                                            .padding(.top, -5.0)
+                                            
+                                            
                                             
                                         }
-                                        
+                                        .groupBoxStyle(TransparentGroupBox())
+                                        .padding(.horizontal)
                                     }
+                                    
                                 }
-                                
                                 .groupBoxStyle(TransparentGroupBox())
                                 .padding(.horizontal)
                                 
                                 
-                                //                            Section(header: Text(category).font(.title).foregroundColor(Color.black).padding(.top)) {
-                                
-                                //                                ForEach(subRecipes) { item in
-                                //
-                                //
-                                //                                    NavigationLink(destination: RecipeObjectView(title: item.title, category: item.category, directions: item.directions)) {
-                                //                                        GroupBox(label: Label(item.title, systemImage: "fork.knife").foregroundColor(.black)) {
-                                //                                        }
-                                //                                        .groupBoxStyle(TransparentGroupBox())
-                                //                                        .padding(.horizontal)
-                                //
-                                //                                    }
-                                //
-                                //                                }
-                                
-                                //                            }
                             }
-                        }
-                        
-                        LazyVGrid(columns: columns, spacing: 20) {
-                            
-                            GroupBox(label: HStack {
-                                Spacer()
-                                Label("Expiring Ingredients", systemImage: "exclamationmark.triangle").padding(.top).foregroundColor(.black).font(.title)
-                                Spacer()
-                            }
-                            ) {
-                                
-                                ForEach(recommender.expiringIngredients) { item in
-                                    GroupBox(label: Label(item.ingredient, systemImage: "fork.knife").foregroundColor(.black)) {
-                                        
-                                        
-                                        HStack {
-                                            Text("Expiration Date:")
-                                                .foregroundColor(Color.black)
-                                            Text(item.expiration, style: .date)
-                                                .foregroundColor(Color.black)
-                                            
-                                        }
-                                        .padding(.top, -5.0)
-                                        
-                                        
-                                        
-                                    }
-                                    .groupBoxStyle(TransparentGroupBox())
-                                    .padding(.horizontal)
-                                }
-                                
-                            }
-                            .groupBoxStyle(TransparentGroupBox())
-                            .padding(.horizontal)
-                            
-                            
                         }
                         
                     }
@@ -168,8 +154,8 @@ struct HomeView: View {
                 }.refreshable {recommender.fetchRecipesAndIngredientsFromFirestore()}
                 
             }
+            
         }
-        
     }
     
     init() {

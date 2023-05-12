@@ -2,8 +2,14 @@
 //  SettingsView.swift
 //  UnifiedGroceryApp
 //
-//  Created by Travis Tran on 5/2/23.
-//
+
+
+
+
+
+
+
+// not in use, will be an additional feature
 
 import SwiftUI
 

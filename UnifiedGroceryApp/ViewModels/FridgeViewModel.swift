@@ -116,7 +116,7 @@ class FridgeViewModel: ObservableObject {
                         
                         // get all docs and assign them to published variable "fridge" in async format
                         
-                        self.fridge = snapshot.documents.map { d
+                        self.fridge = snapshot.documents.map { d in
                             
                             // for each ingredient object, declare date -- needs special formatting
                             

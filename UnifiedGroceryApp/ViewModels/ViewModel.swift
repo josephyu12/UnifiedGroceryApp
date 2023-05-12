@@ -10,65 +10,18 @@ import Firebase
 
 class ViewModel: ObservableObject {
     
+    // list of all recipes to be returned
+    
     @Published var list = [Recipe]()
     
-    func updateData(recipeToUpdate: Recipe) {
-        let db = Firestore.firestore()
-        db.collection("recipes-v2").document(recipeToUpdate.id).setData(["title": "Updated: \(recipeToUpdate.title)"], merge: true) { error in
-            
-            if error == nil {
-                self.getData()
-            }
-        }
-    }
-    
-    func deleteData(recipeToDelete: Recipe) {
-        
-        let db = Firestore.firestore()
-        
-        db.collection("recipes-v2").document(recipeToDelete.id).delete { error in
-            
-            if error == nil {
-                
-                // Update from main thread
-                
-                DispatchQueue.main.async {
-                    
-                    self.list.removeAll { recipe in
-                        return recipe.id == recipeToDelete.id
-                    }
-                    
-                }
+    // function to get recipe data
 
-            }
-            
-        }
-    }
-    
-    func addData(title: String, category: String) {
-        
-        // get reference
-        let db = Firestore.firestore()
-        
-        // add document
-        db.collection("recipes-v2").addDocument(data: ["title": title, "category": category]) {
-            error in
-            
-            if error == nil {
-                self.getData()
-            }
-            else {
-                
-            }
-        }
-        
-    }
-    
     func getData() {
         // get reference to the database
+        
         let db = Firestore.firestore()
         
-        // Read the documents
+        // read the documents
         
         db.collection("recipes-v2").getDocuments { snapshot, error in
             // check for errors
@@ -76,12 +29,13 @@ class ViewModel: ObservableObject {
                 
                 if let snapshot = snapshot {
                     
+                    // put in async function
+                    
                     DispatchQueue.main.async {
                         
-                        // get all docs and create todos
+                        // get all docs and create recipe items
+                        
                         self.list = snapshot.documents.map { d in
-                            
-//                            print(d["title"] as? String ?? "")
                             
                             return Recipe(id: d.documentID,
                                           title: d["title"] as? String ?? "",
@@ -146,6 +100,8 @@ class ViewModel: ObservableObject {
                                           qty19: d["qty19"] as? String ?? ""
                             )
                         }
+                        
+                        // sort recipes by alphabetized
                         
                         self.list.sort {
                             $0.title < $1.title

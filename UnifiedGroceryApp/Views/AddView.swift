@@ -9,39 +9,57 @@ import SwiftUI
 
 struct AddView: View {
     
+    // observe the fridgemodel which has data
+    
     @ObservedObject var fridgemodel = FridgeViewModel()
     
+    // define flex columns
     let columns = [
         GridItem(.flexible())
     ]
+    
+    // define states which will be used in form control
     var updateIngredient: Ingredient
     @State var ingredient: String
     @State var category: String
     @State var amount: String
     @State var amount_unit: String
     @State var expiration: Date
+    
+    // define list of food categories
     var categories = ["Select a Category", "Fruits", "Vegetables", "Grains", "Protein", "Dairy", "Condiments", "Other"]
     
+    // define function to exit editing
     private func endEditing() {
         UIApplication.shared.endEditing()
     }
     
+    // main body
+    
     var body: some View {
+        
+        // everything is on a ZStack which will allow background to show
         ZStack (alignment: .top) {
 
                     
                     Background {
                         
+                        // background blue everywhere but a bit of red at botton to accomodate for overlay with ContentView NavBar
+                        
                         Color("redcolor").ignoresSafeArea()
                         
                         Color("bluecolor").edgesIgnoringSafeArea(.top)
                         
+                        // VStack for the form
+                        
                         VStack (spacing: 10) {
-                              
+                            
+                            // field for the ingredient name
                             
                             TextField("Ingredient Name", text: $ingredient) {
                                 self.endEditing() }.padding(.all, 10).background(Color.gray).cornerRadius(10).foregroundColor(Color.black)
                             
+                            // field for the category
                             
                             Picker("Category", selection: $category) {
                                 ForEach(categories, id: \.self) {
@@ -49,21 +67,33 @@ struct AddView: View {
                                 }
                             }
                             
+                            // field for the ingredient amount
+                            
                             TextField("Amount", text: $amount)
                                 .padding(.all, 10).background(Color.gray).cornerRadius(10).foregroundColor(Color.black)
                                 .keyboardType(.decimalPad)
                             
+                            // field for the amount unit
+                            
                             TextField("Amount Unit", text: $amount_unit)
                                 .padding(.all, 10).background(Color.gray).cornerRadius(10).foregroundColor(Color.black)
                             
+                            // field for the expiration date, uses a DatePicker
+                            
                             DatePicker("Expiration Date", selection: $expiration, in: Date()..., displayedComponents: .date).foregroundColor(Color.black).padding()
+                            
+                            // submit button
                             
                             Button(action: {
                                 
                                 print(ingredient)
                                 print(category)
                                 
+                                // update with the relevant fields
+                                
                                 fridgemodel.updateData(ingredientToUpdate: updateIngredient, ingredient: ingredient, category: category, amount: amount, amount_unit: amount_unit, expiration: expiration)
+                                
+                                // reset the local fields with blanks
                                 
                                 ingredient = ""
                                 category = ""
@@ -72,7 +102,13 @@ struct AddView: View {
                                 expiration = Date()
                                 
                             }, label: {
+                                
+                                // submission button text
+                                
                                 Text("Update Ingredient")
+                                
+                                // disabled if there is no ingredient name or category, these are required fields
+                                
                             }).disabled(ingredient.isEmpty || category == "").padding()
                                 .background(Color("graycolor"))
                                 .foregroundColor(.black)
@@ -81,6 +117,8 @@ struct AddView: View {
                         }
                         .padding()
                         
+                        
+                        // exit editing mode if tap anywhere else on the page
                         
                         
                     }.onTapGesture {

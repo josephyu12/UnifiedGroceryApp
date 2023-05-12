@@ -11,23 +11,28 @@ import NaturalLanguage
 
 class RecommenderViewModel: ObservableObject {
     
+    // published variables of recommendedRecipes and expiringIngredients
+    
     @Published var recommendedRecipes = [Recipe]()
     
     @Published var expiringIngredients = [Ingredient]()
-    
-//    @Published var fridgeSorted = [[Ingredient]]()
     
     var categories = ["Select a Category", "Fruits", "Vegetables", "Grains", "Protein", "Dairy", "Condiments", "Other"]
     
     var user = "travtran"
     
+    // function to check if a string is singular. Useful for ingredient comparisons later
+    
     func singularForm(of pluralWord: String) -> String {
+        
         // Check if the word is already singular
+        
         if pluralWord.suffix(1) != "s" {
             return pluralWord
         }
         
         // Check for irregular plurals
+        
         switch pluralWord {
         case "children":
             return "child"
@@ -44,24 +49,16 @@ class RecommenderViewModel: ObservableObject {
         }
         
         // Remove the "s" from the end of the word
+        
         let singular = String(pluralWord.dropLast())
         
-//        // Check for certain endings that require special handling
-//        if singular.hasSuffix("ch") || singular.hasSuffix("x") || singular.hasSuffix("s") {
-//            return singular
-//        }
-//        if singular.hasSuffix("y") {
-//            let index = singular.index(before: singular.endIndex)
-//            let previousChar = singular[index]
-//            if previousChar != "a" && previousChar != "e" && previousChar != "i" && previousChar != "o" && previousChar != "u" {
-//                return String(singular.dropLast()) + "y"
-//            }
-//        }
         
-        // If none of the above conditions match, just add "s"
+        // return the word without s if it's not irregular
+        
         return singular
     }
     
+    // function that takes in an ingredient object and checks if its expiration date is less than a week from today. Appends all relevant ingredients to a list that is returned
     
     func checkExpiration(ingredients: [Ingredient]) -> [Ingredient] {
         let now = Date()
@@ -69,8 +66,7 @@ class RecommenderViewModel: ObservableObject {
         var aboutToExpire: [Ingredient] = []
         
         for ingredient in ingredients {
-            print(ingredient)
-            print(ingredient.expiration)
+
             if ingredient.expiration <= oneWeekFromNow {
                 aboutToExpire.append(ingredient)
             }
@@ -79,14 +75,21 @@ class RecommenderViewModel: ObservableObject {
         return aboutToExpire
     }
 
+    // function to check for a list of recipes if any of the recipes contain relevant ingredients. This will loop through all recipes and add it to a validRecipes array if it is missing less than 3 ingredients
     
     func checkIngredients(for recipes: [Recipe], using ingredients: [Ingredient]) -> [Recipe] {
         
         var validRecipes: [Recipe] = []
         
+        // loop through each recipes
+        
         for recipe in recipes {
             print("---------")
+            
             var missingIngredients: [String] = []
+            
+            // get all ingredients for the recipe in a list
+            
             let totalIngredients = [
                     recipe.ingredient01,
                     recipe.ingredient02,
@@ -108,23 +111,32 @@ class RecommenderViewModel: ObservableObject {
                     recipe.ingredient18,
                     recipe.ingredient19
                 ]
+            
             print(totalIngredients)
+            
+            // loop through each ingredient in the recipe. See if it exists in the fridge ingredient list
+            
             for ingredientName in totalIngredients {
-                    
-                    // search for the ingredient in the ingredients list
+                
+                // assume everyone has water, ignore if the ingredient is water
                 
                 if (ingredientName.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() == "water") {
                     continue
                 }
                 
+                // ignore if the ingredient is blank (filler space)
+                
                 if (ingredientName.trimmingCharacters(in: .whitespacesAndNewlines) != "") {
                     
                     print(singularForm(of: (ingredientName.trimmingCharacters(in: .whitespacesAndNewlines))))
                     
+                    // trim both the strings and lowercase them, and see if the fridge ingredient has the recipe ingredient as a substring
+                    
                     if ingredients.contains(where: { singularForm(of: ($0.ingredient.lowercased())).contains(singularForm(of: (ingredientName.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()))) }) {
                         
-                        // TODO: check if the unit and quantity match
+                        // continue, essentially
                         
+                        // if missing ingredient, append it to an array of missing ingredients
                         
                     } else {
                         missingIngredients.append(ingredientName.trimmingCharacters(in: .whitespacesAndNewlines).lowercased())
@@ -135,43 +147,57 @@ class RecommenderViewModel: ObservableObject {
                 
             }
             
+            // if there are less than 3 missing ingredients for this recipe, consider it valid
+            
             if missingIngredients.count <= 2 {
                 validRecipes.append(recipe)
             }
-            
-            if missingIngredients.isEmpty {
-                print("\(recipe.title) can be made with the available ingredients.")
-            } else {
-                print("\(recipe.title) cannot be made with the available ingredients. Missing: \(missingIngredients)")
-            }
-            
             
         }
         
         return validRecipes
     }
     
-    func fetchRecipesAndIngredientsFromFirestore() { // completion: @escaping ([Recipe], [Ingredient]) -> Void
+    // get all recipes and ingredients from Firestore database, using dispatch control for the async functions
+    
+    func fetchRecipesAndIngredientsFromFirestore() {
+        
+        // get references to ingredients and recipes locations
+        
         let db = Firestore.firestore()
         let recipesRef = db.collection("recipes-v2")
         let ingredientsRef = db.collection("users").document(user).collection("fridge")
+        
+        // define the recipes and ingredients variables that returns from the database will be added to
         
         var recipes: [Recipe] = []
         var ingredients: [Ingredient] = []
         let dispatchGroup = DispatchGroup()
         
+        // start a dispatchGroup for async function
+        
         dispatchGroup.enter()
+        
+        // get all recipes
+        
         recipesRef.getDocuments { (querySnapshot, error) in
+            
+            // if there is an error, exit
+            
             if let error = error {
                 print("Error fetching recipes: \(error.localizedDescription)")
                 dispatchGroup.leave()
                 return
             }
             
+            // make sure querySnapshot exists, else exit
+            
             guard let querySnapshot = querySnapshot else {
                 dispatchGroup.leave()
                 return
             }
+            
+            // let recipes be a map for each of the returned recipes, with this relevant field information
             
             recipes = querySnapshot.documents.compactMap { document -> Recipe? in
                 let data = document.data()
@@ -197,7 +223,6 @@ class RecommenderViewModel: ObservableObject {
                 let ingredient16 = data["ingredient16"] as? String ?? ""
                 let ingredient17 = data["ingredient17"] as? String ?? ""
                 let ingredient18 = data["ingredient18"] as? String ?? ""
-                //...
                 let ingredient19 = data["ingredient19"] as? String ?? ""
                 let unit01 = data["unit01"] as? String ?? ""
                 let unit02 = data["unit02"] as? String ?? ""
@@ -217,7 +242,6 @@ class RecommenderViewModel: ObservableObject {
                 let unit16 = data["unit16"] as? String ?? ""
                 let unit17 = data["unit17"] as? String ?? ""
                 let unit18 = data["unit18"] as? String ?? ""
-                // ...
                 let unit19 = data["unit19"] as? String ?? ""
                 let qty01 = data["qty01"] as? String ?? ""
                 let qty02 = data["qty02"] as? String ?? ""
@@ -237,8 +261,9 @@ class RecommenderViewModel: ObservableObject {
                 let qty16 = data["qty16"] as? String ?? ""
                 let qty17 = data["qty17"] as? String ?? ""
                 let qty18 = data["qty18"] as? String ?? ""
-                // ...
                 let qty19 = data["qty19"] as? String ?? ""
+                
+                // return the recipe object for each of the returned recipes
                 
                 let recipe = Recipe(
                     id: id,
@@ -308,25 +333,39 @@ class RecommenderViewModel: ObservableObject {
             dispatchGroup.leave()
         }
         
+        // start a new dispatchGroup as getting the ingredients now
+        
         dispatchGroup.enter()
+        
+        
         ingredientsRef.getDocuments { (querySnapshot, error) in
+            
+            // if there is error, leave
+            
             if let error = error {
                 print("Error fetching ingredients: \(error.localizedDescription)")
                 dispatchGroup.leave()
                 return
             }
             
+            // make sure querySnapshot exists or leave
+            
             guard let querySnapshot = querySnapshot else {
                 dispatchGroup.leave()
                 return
             }
             
-            
+            // go through all of the returned ingredients with a compactMap
             
             ingredients = querySnapshot.documents.compactMap { document -> Ingredient? in
+                
                 let data = document.data()
                 
+                // define date, will need special formatting
+                
                 var date: Date
+                
+                // convert the returned expiration to a Date object from Timestamp
                 
                 if let firTimestamp = data["expiration"] as? Timestamp {
                     date = firTimestamp.dateValue()
@@ -335,6 +374,8 @@ class RecommenderViewModel: ObservableObject {
                     print("firTimestamp is not a FIRTimestamp object")
                     date = Date()
                 }
+                
+                // assign the fields to the correct information
                 
                 let id = document.documentID
                 let ingredient = data["ingredient"] as? String ?? ""
@@ -346,8 +387,13 @@ class RecommenderViewModel: ObservableObject {
                 let ingredient_return = Ingredient(id: id, ingredient: ingredient, category: category, amount: amount, amount_unit: amount_unit, expiration: expiration)
                 return ingredient_return
             }
+            
+            // finish ingredients collection
+            
             dispatchGroup.leave()
         }
+        
+        // run the two functions and assign them to the public variables, recommendedRecipes and expiringIngredients
         
         dispatchGroup.notify(queue: .main) {
             self.recommendedRecipes = self.checkIngredients(for: recipes, using: ingredients)

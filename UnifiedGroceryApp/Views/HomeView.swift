@@ -9,6 +9,7 @@
 import SwiftUI
 // to get date and time
 import UIKit
+//style for box grouping
 struct TransparentGroupBox: GroupBoxStyle {
     func makeBody(configuration: Configuration) -> some View {
         VStack {
@@ -26,9 +27,9 @@ struct TransparentGroupBox: GroupBoxStyle {
     }
 }
 struct HomeView: View {
-    
+    // pulls recipes
     @ObservedObject var fridgemodel = FridgeViewModel()
-    
+    //setup for time, data, group box view
     let timeZone = Int(TimeZone.current.secondsFromGMT())
     let currentDateTime = Date()
     let data = (1...100).map { "Item \($0)" }
@@ -41,7 +42,7 @@ struct HomeView: View {
     @ObservedObject var recommender = RecommenderViewModel()
     
     var body: some View {
-        
+        // for navigation links
         NavigationView {
             
             ZStack (alignment: .top) {
@@ -53,7 +54,7 @@ struct HomeView: View {
                 ScrollView(showsIndicators: false) {
                     
                     VStack {
-                        
+                        //sets time of day message
                         if ((Int(currentDateTime.timeIntervalSince1970)+timeZone)%86400<43200) {
                             Text("Good Morning")
                                 .font(.largeTitle).foregroundColor(Color.black).padding(.top)
@@ -65,16 +66,14 @@ struct HomeView: View {
                         
                         Text("Your Personalized Recipe Recommendations:").font(.headline).foregroundColor(Color.black).padding(.top, -10.0)
                         
-                        
-                        ///////
-                        ///
+                        // if no ingredients, show nothing
                         
                         if (recommender.recommendedRecipes.isEmpty) {
                             
                         }
-                        
+                        // else show recommendations
                         else {
-                            
+                            //loops thorugh categories
                             ForEach(categories, id:\.self) { category in
                                 
                                 let subRecipes = recommender.recommendedRecipes.filter {$0.category == category}
@@ -92,7 +91,7 @@ struct HomeView: View {
                                         
                                         
                                         ForEach(subRecipes) { item in
-                                            
+                                            //loops through recommendations and fields in them
                                             NavigationLink(destination: RecipeObjectView(title: item.title, category: item.category, directions: item.directions)) {
                                                 GroupBox(label: Label(item.title, systemImage: "fork.knife").foregroundColor(.black)) {
                                                 }
@@ -109,7 +108,7 @@ struct HomeView: View {
                                     
                                 }
                             }
-                            
+                            // displays ingredients that are about to expire
                             LazyVGrid(columns: columns, spacing: 20) {
                                 
                                 GroupBox(label: HStack {
@@ -118,7 +117,7 @@ struct HomeView: View {
                                     Spacer()
                                 }
                                 ) {
-                                    
+                                    // loops thorugh ingredients
                                     ForEach(recommender.expiringIngredients) { item in
                                         GroupBox(label: Label(item.ingredient, systemImage: "fork.knife").foregroundColor(.black)) {
                                             
@@ -150,14 +149,14 @@ struct HomeView: View {
                     }
                     
                     Spacer()
-                    
+                    //makes page refreshable
                 }.refreshable {recommender.fetchRecipesAndIngredientsFromFirestore()}
                 
             }
             
         }
     }
-    
+    //pulls from firebase
     init() {
         recommender.fetchRecipesAndIngredientsFromFirestore()
     }

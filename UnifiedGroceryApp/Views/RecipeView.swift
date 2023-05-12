@@ -7,10 +7,12 @@
 import SwiftUI
 struct RecipeView: View {
     
+    
+    //accesses recipies
     @ObservedObject var model = ViewModel()    
     
     var body: some View {
-        
+        //nav view for redirections
         NavigationView {
             
             ZStack (alignment: .top) {
@@ -27,6 +29,7 @@ struct RecipeView: View {
                         
                         Spacer()
                         
+                        //loops thorugh each recipe and displays all fields
                         ForEach(model.list) { item in
                             
                             
@@ -50,7 +53,7 @@ struct RecipeView: View {
         
     }
     
-    
+    //pulls data on load
     init() {
         model.getData()
     }

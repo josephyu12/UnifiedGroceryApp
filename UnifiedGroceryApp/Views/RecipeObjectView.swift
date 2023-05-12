@@ -6,10 +6,11 @@
 //
 import SwiftUI
 struct RecipeObjectView: View {
-    
+    //for specific grid view
     let columns = [
         GridItem(.flexible())
     ]
+    // up to 10 ingredients/units/quantities per recipe right now
     var image: Image?
     var title: String
     var category: String
@@ -60,9 +61,10 @@ struct RecipeObjectView: View {
 //                        .font(.largeTitle)
 //                        .multilineTextAlignment(.center)
             
-                    
+                    //lazyVGrid display
                     LazyVGrid(columns: columns, spacing: 20) {
                         
+                        //displays passed in data
                         GroupBox(label: Label(title, systemImage: "fork.knife").padding(.bottom).foregroundColor(.black).font(.largeTitle)) {
                             if (category != "") {
                                 Text("Category: \(category)")

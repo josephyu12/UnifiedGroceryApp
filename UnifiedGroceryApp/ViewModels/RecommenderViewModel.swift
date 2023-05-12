@@ -13,11 +13,70 @@ class RecommenderViewModel: ObservableObject {
     
     @Published var recommendedRecipes = [Recipe]()
     
+    @Published var expiringIngredients = [Ingredient]()
+    
 //    @Published var fridgeSorted = [[Ingredient]]()
     
     var categories = ["Select a Category", "Fruits", "Vegetables", "Grains", "Protein", "Dairy", "Condiments", "Other"]
     
     var user = "travtran"
+    
+    func singularForm(of pluralWord: String) -> String {
+        // Check if the word is already singular
+        if pluralWord.suffix(1) != "s" {
+            return pluralWord
+        }
+        
+        // Check for irregular plurals
+        switch pluralWord {
+        case "children":
+            return "child"
+        case "people":
+            return "person"
+        case "geese":
+            return "goose"
+        case "teeth":
+            return "tooth"
+        case "feet":
+            return "foot"
+        default:
+            break
+        }
+        
+        // Remove the "s" from the end of the word
+        let singular = String(pluralWord.dropLast())
+        
+//        // Check for certain endings that require special handling
+//        if singular.hasSuffix("ch") || singular.hasSuffix("x") || singular.hasSuffix("s") {
+//            return singular
+//        }
+//        if singular.hasSuffix("y") {
+//            let index = singular.index(before: singular.endIndex)
+//            let previousChar = singular[index]
+//            if previousChar != "a" && previousChar != "e" && previousChar != "i" && previousChar != "o" && previousChar != "u" {
+//                return String(singular.dropLast()) + "y"
+//            }
+//        }
+        
+        // If none of the above conditions match, just add "s"
+        return singular
+    }
+    
+    
+    func checkExpiration(ingredients: [Ingredient]) -> [Ingredient] {
+        let now = Date()
+        let oneWeekFromNow = Calendar.current.date(byAdding: .day, value: 7, to: now)!
+        var aboutToExpire: [Ingredient] = []
+        
+        for ingredient in ingredients {
+            if ingredient.expiration <= oneWeekFromNow {
+                aboutToExpire.append(ingredient)
+            }
+        }
+        
+        return aboutToExpire
+    }
+
     
     func checkIngredients(for recipes: [Recipe], using ingredients: [Ingredient]) -> [Recipe] {
         
@@ -58,11 +117,9 @@ class RecommenderViewModel: ObservableObject {
                 
                 if (ingredientName.trimmingCharacters(in: .whitespacesAndNewlines) != "") {
                     
-                    print(ingredientName.trimmingCharacters(in: .whitespacesAndNewlines))
+                    print(singularForm(of: (ingredientName.trimmingCharacters(in: .whitespacesAndNewlines))))
                     
-                    if ingredients.contains(where: { $0.ingredient.lowercased().contains(ingredientName.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()) }) {
-                        print("IT MATCHES")
-                        print(ingredientName.trimmingCharacters(in: .whitespacesAndNewlines).lowercased())
+                    if ingredients.contains(where: { singularForm(of: ($0.ingredient.lowercased())).contains(singularForm(of: (ingredientName.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()))) }) {
                         
                         // TODO: check if the unit and quantity match
                         
@@ -279,6 +336,7 @@ class RecommenderViewModel: ObservableObject {
         
         dispatchGroup.notify(queue: .main) {
             self.recommendedRecipes = self.checkIngredients(for: recipes, using: ingredients)
+            self.expiringIngredients = self.checkExpiration(ingredients: ingredients)
         }
     }
         

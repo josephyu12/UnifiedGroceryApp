@@ -27,7 +27,7 @@ struct TransparentGroupBox: GroupBoxStyle {
 }
 struct HomeView: View {
     
-//    @ObservedObject var breakfast = RecommenderViewModel()
+    @ObservedObject var fridgemodel = FridgeViewModel()
     
     let timeZone = Int(TimeZone.current.secondsFromGMT())
     let currentDateTime = Date()
@@ -35,6 +35,8 @@ struct HomeView: View {
     let columns = [
         GridItem(.flexible())
     ]
+    
+    var categories = ["Appetizers", "Main Dishes", "Salads", "Soup", "Desserts"]
     
     @ObservedObject var recommender = RecommenderViewModel()
     
@@ -59,6 +61,9 @@ struct HomeView: View {
                         Text("Good Evening").font(.largeTitle).foregroundColor(Color.black).padding(.top)
                     }
                     
+                    Text("Your Personalized Recipe Recommendations:").font(.headline).foregroundColor(Color.black).padding(.top, -10.0)
+                    
+                    
                     ///////
                     ///
                     
@@ -68,47 +73,88 @@ struct HomeView: View {
                     
                     else {
                         
-
-                    
-                    ForEach(recommender.recommendedRecipes) { item in
-                        
-                        
-                        NavigationLink(destination: RecipeObjectView(title: item.title, category: item.category, directions: item.directions)) {
-                            GroupBox(label: Label(item.title, systemImage: "fork.knife").foregroundColor(.black)) {
+                        ForEach(categories, id:\.self) { category in
+                            
+                            let subRecipes = recommender.recommendedRecipes.filter {$0.category == category}
+                            
+                            if (subRecipes.isEmpty) {
+                                
+                            } else {
+                                
+                                
+                                GroupBox(label: HStack {
+                                    Spacer()
+                                    Label(category, systemImage: "").padding(.bottom, -5.0).padding(.top, 5.0).foregroundColor(.black).font(.largeTitle)
+                                    Spacer()
+                                }) {
+                                    
+                                    
+                                    ForEach(subRecipes) { item in
+                                        
+                                        NavigationLink(destination: RecipeObjectView(title: item.title, category: item.category, directions: item.directions)) {
+                                            GroupBox(label: Label(item.title, systemImage: "fork.knife").foregroundColor(.black)) {
+                                            }
+                                            .groupBoxStyle(TransparentGroupBox())
+                                            .padding(.horizontal)
+                                            
+                                        }
+                                        
+                                    }
+                                }
+                                
+                                .groupBoxStyle(TransparentGroupBox())
+                                .padding(.horizontal)
+                                
                             }
-                            .groupBoxStyle(TransparentGroupBox())
-                            .padding(.horizontal)
-                        }
-                        
+                            
+//                            Section(header: Text(category).font(.title).foregroundColor(Color.black).padding(.top)) {
+                                
+//                                ForEach(subRecipes) { item in
+//
+//
+//                                    NavigationLink(destination: RecipeObjectView(title: item.title, category: item.category, directions: item.directions)) {
+//                                        GroupBox(label: Label(item.title, systemImage: "fork.knife").foregroundColor(.black)) {
+//                                        }
+//                                        .groupBoxStyle(TransparentGroupBox())
+//                                        .padding(.horizontal)
+//
+//                                    }
+//
+//                                }
+                                
+//                            }
                         }
                     }
                     
-                    ///////
-                    
                     LazyVGrid(columns: columns, spacing: 20) {
                         
-                        GroupBox(label: Label("Breakfast", systemImage: "fork.knife").foregroundColor(.black).font(.largeTitle)) {
-                            Text("Breakfast Recommendation")
-                                .foregroundColor(Color.black)
-                        }
-                        .groupBoxStyle(TransparentGroupBox())
-                        .padding(.horizontal)
-                        GroupBox(label: Label("Lunch", systemImage: "fork.knife").foregroundColor(.black).font(.largeTitle)) {
-                            Text("Lunch Recommendation")
-                                .foregroundColor(Color.black)
-                        }
-                        .groupBoxStyle(TransparentGroupBox())
-                        .padding(.horizontal)
-                        GroupBox(label: Label("Dinner", systemImage: "fork.knife").foregroundColor(.black).font(.largeTitle)) {
-                            Text("Dinner Recommendation")
-                                .foregroundColor(Color.black)
-                        }
-                        .groupBoxStyle(TransparentGroupBox())
-                        .padding(.horizontal)
-                        
-                        GroupBox(label: Label("Expiring Ingredients", systemImage: "fork.knife").foregroundColor(.black).font(.largeTitle)) {
-                            Text("These ingredients are going to expire")
-                                .foregroundColor(Color.black)
+                        GroupBox(label: HStack {
+                            Spacer()
+                            Label("Expiring Ingredients", systemImage: "exclamationmark.triangle").padding(.top).foregroundColor(.black).font(.title)
+                            Spacer()
+                            }
+                            ) {
+                            
+                            ForEach(recommender.expiringIngredients) { item in
+                                GroupBox(label: Label(item.ingredient, systemImage: "fork.knife").foregroundColor(.black)) {
+                                    
+                                                                      
+                                        HStack {
+                                            Text("Expiration Date:")
+                                                .foregroundColor(Color.black)
+                                            Text(item.expiration, style: .date)
+                                                .foregroundColor(Color.black)
+
+                                        }
+                                        .padding(.top, -5.0)
+                                    
+                                    
+                                    
+                                }
+                                .groupBoxStyle(TransparentGroupBox())
+                                .padding(.horizontal)
+                            }
+                            
                         }
                         .groupBoxStyle(TransparentGroupBox())
                         .padding(.horizontal)
@@ -119,7 +165,7 @@ struct HomeView: View {
                 }
                 
                 
-            }
+            }.refreshable {recommender.fetchRecipesAndIngredientsFromFirestore()}
             
         }
         
@@ -127,7 +173,6 @@ struct HomeView: View {
     
     init() {
         recommender.fetchRecipesAndIngredientsFromFirestore()
-//        fridgemodel.getData()
     }
     
 }

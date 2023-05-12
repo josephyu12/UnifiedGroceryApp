@@ -14,7 +14,7 @@ class ViewModel: ObservableObject {
     
     func updateData(recipeToUpdate: Recipe) {
         let db = Firestore.firestore()
-        db.collection("recipes").document(recipeToUpdate.id).setData(["title": "Updated: \(recipeToUpdate.title)"], merge: true) { error in
+        db.collection("recipes-v2").document(recipeToUpdate.id).setData(["title": "Updated: \(recipeToUpdate.title)"], merge: true) { error in
             
             if error == nil {
                 self.getData()
@@ -26,7 +26,7 @@ class ViewModel: ObservableObject {
         
         let db = Firestore.firestore()
         
-        db.collection("recipes").document(recipeToDelete.id).delete { error in
+        db.collection("recipes-v2").document(recipeToDelete.id).delete { error in
             
             if error == nil {
                 
@@ -51,7 +51,7 @@ class ViewModel: ObservableObject {
         let db = Firestore.firestore()
         
         // add document
-        db.collection("recipes").addDocument(data: ["title": title, "category": category]) {
+        db.collection("recipes-v2").addDocument(data: ["title": title, "category": category]) {
             error in
             
             if error == nil {
@@ -70,7 +70,7 @@ class ViewModel: ObservableObject {
         
         // Read the documents
         
-        db.collection("recipes").getDocuments { snapshot, error in
+        db.collection("recipes-v2").getDocuments { snapshot, error in
             // check for errors
             if error == nil {
                 

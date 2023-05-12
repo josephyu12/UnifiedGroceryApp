@@ -28,20 +28,17 @@ struct AddView: View {
     
     var body: some View {
         ZStack (alignment: .top) {
-            Color("redcolor").ignoresSafeArea()
-            
-            Color("bluecolor").edgesIgnoringSafeArea(.top)
-            
 
-                
-                    
-                   
-                    
-                    
                     
                     Background {
+                        
+                        Color("redcolor").ignoresSafeArea()
+                        
+                        Color("bluecolor").edgesIgnoringSafeArea(.top)
+                        
                         VStack (spacing: 10) {
-                                                        
+                              
+                            
                             TextField("Ingredient Name", text: $ingredient) {
                                 self.endEditing() }.padding(.all, 10).background(Color.gray).cornerRadius(10).foregroundColor(Color.black)
                             

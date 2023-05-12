@@ -69,6 +69,8 @@ class RecommenderViewModel: ObservableObject {
         var aboutToExpire: [Ingredient] = []
         
         for ingredient in ingredients {
+            print(ingredient)
+            print(ingredient.expiration)
             if ingredient.expiration <= oneWeekFromNow {
                 aboutToExpire.append(ingredient)
             }
@@ -319,14 +321,27 @@ class RecommenderViewModel: ObservableObject {
                 return
             }
             
+            
+            
             ingredients = querySnapshot.documents.compactMap { document -> Ingredient? in
                 let data = document.data()
+                
+                var date: Date
+                
+                if let firTimestamp = data["expiration"] as? Timestamp {
+                    date = firTimestamp.dateValue()
+                    let secondsSinceEpoch = date.timeIntervalSince1970
+                } else {
+                    print("firTimestamp is not a FIRTimestamp object")
+                    date = Date()
+                }
+                
                 let id = document.documentID
                 let ingredient = data["ingredient"] as? String ?? ""
                 let category = data["category"] as? String ?? ""
                 let amount = data["amount"] as? String ?? ""
                 let amount_unit = data["amount_unit"] as? String ?? ""
-                let expiration = data["expiration"] as? Date ?? Date()
+                let expiration = date as? Date ?? Date()
                 
                 let ingredient_return = Ingredient(id: id, ingredient: ingredient, category: category, amount: amount, amount_unit: amount_unit, expiration: expiration)
                 return ingredient_return

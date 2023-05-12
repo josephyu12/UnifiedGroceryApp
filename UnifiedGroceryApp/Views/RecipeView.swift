@@ -23,7 +23,7 @@ struct RecipeView: View {
                     
                     VStack {
                         
-                        Text("Recipes").font(.largeTitle).foregroundColor(Color.black).padding(.top)
+                        Text("All Recipes").font(.largeTitle).foregroundColor(Color.black).padding(.top)
                         Spacer()
                         
                         ForEach(model.list) { item in

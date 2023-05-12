@@ -72,7 +72,7 @@ struct EditView: View {
                 TextField("Amount Unit", text: $amount_unit)
                     .padding(.all, 10).background(Color.gray).cornerRadius(10).foregroundColor(Color.black)
                 
-                DatePicker("Expiration Date", selection: $expiration, in: Date()..., displayedComponents: .date).foregroundColor(Color.black)
+                DatePicker("Expiration Date", selection: $expiration, in: Date()..., displayedComponents: .date).foregroundColor(Color.black).padding()
                 
                 Button(action: {
                     
@@ -89,8 +89,11 @@ struct EditView: View {
                     expiration = Date()
                     
                 }, label: {
-                    Text("Add Ingredient to Fridge").foregroundColor(Color.black)
-                }).disabled(ingredient.isEmpty || category == "")
+                    Text("Add Ingredient to Fridge")
+                }).disabled(ingredient.isEmpty || category == "").padding()
+                    .background(.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(22)
                 
             }
             .padding()

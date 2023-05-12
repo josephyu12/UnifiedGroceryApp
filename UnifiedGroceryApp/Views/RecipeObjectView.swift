@@ -63,15 +63,19 @@ struct RecipeObjectView: View {
                     
                     LazyVGrid(columns: columns, spacing: 20) {
                         
-                        GroupBox(label: Label(title, systemImage: "fork.knife").foregroundColor(.black).font(.largeTitle)) {
-                            Text(category)
-                                .foregroundColor(Color.black)
+                        GroupBox(label: Label(title, systemImage: "fork.knife").padding(.bottom).foregroundColor(.black).font(.largeTitle)) {
+                            if (category != "") {
+                                Text("Category: \(category)")
+                                    .foregroundColor(Color.black)
+                                    .font(.title2)
+                                    .padding(.bottom)
+                            }
                             Spacer()
                             Text(directions)
                                 .foregroundColor(Color.black)
                         }
                         .groupBoxStyle(TransparentGroupBox())
-                        .padding(.horizontal)
+                        .padding([.top, .leading, .trailing])
                     }
                 }
             }

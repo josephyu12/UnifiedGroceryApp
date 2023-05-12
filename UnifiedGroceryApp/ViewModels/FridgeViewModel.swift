@@ -19,7 +19,7 @@ class FridgeViewModel: ObservableObject {
     
     func updateData(ingredientToUpdate: Ingredient, ingredient: String, category: String, amount: String, amount_unit: String, expiration: Date) {
         let db = Firestore.firestore()
-        db.collection("users").document(user).collection("fridge").document(ingredientToUpdate.id).setData(["ingredient": ingredient, "category": category,"amount": amount,"amount_unit": amount_unit,"expiration": expiration], merge: true) { error in
+        db.collection("users").document(user).collection("fridge").document(ingredientToUpdate.id).setData(["ingredient": ingredient, "category": category,"amount": amount,"amount-unit": amount_unit,"expiration": expiration], merge: true) { error in
             
             if error == nil {
                 self.getData()

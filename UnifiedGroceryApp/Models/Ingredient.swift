@@ -7,6 +7,8 @@
 
 import Foundation
 
+// structure for an Ingredient object
+
 struct Ingredient: Identifiable {
     
     var id: String

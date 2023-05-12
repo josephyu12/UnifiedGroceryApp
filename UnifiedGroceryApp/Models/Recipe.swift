@@ -7,6 +7,8 @@
 
 import Foundation
 
+// structure for a Recipe object
+
 struct Recipe: Identifiable {
     
     var id: String

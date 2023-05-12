@@ -164,6 +164,7 @@ struct HomeView: View {
                     
                 }
                 
+                Spacer()
                 
             }.refreshable {recommender.fetchRecipesAndIngredientsFromFirestore()}
             

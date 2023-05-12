@@ -91,8 +91,8 @@ struct EditView: View {
                 }, label: {
                     Text("Add Ingredient to Fridge")
                 }).disabled(ingredient.isEmpty || category == "").padding()
-                    .background(.blue)
-                    .foregroundColor(.white)
+                    .background(Color("graycolor"))
+                    .foregroundColor(.black)
                     .cornerRadius(22)
                 
             }

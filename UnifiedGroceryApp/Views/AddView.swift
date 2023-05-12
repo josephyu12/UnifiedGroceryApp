@@ -74,8 +74,8 @@ struct AddView: View {
                             }, label: {
                                 Text("Update Ingredient")
                             }).disabled(ingredient.isEmpty || category == "").padding()
-                                .background(.blue)
-                                .foregroundColor(.white)
+                                .background(Color("graycolor"))
+                                .foregroundColor(.black)
                                 .cornerRadius(22)
                             
                         }
